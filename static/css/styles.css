@@ -1,0 +1,24 @@
+body {
+    font-family: 'Unkempt', cursive, 'Sans-Serif';
+}
+
+.navbar-brand-logo {
+    color: #b0bf1a;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+.loginButton {
+    margin-top: 16px;
+}
+
+.signup-header {
+	text-align: center;
+}
+
+.homeLogo {
+    width: 32px;
+    height: 32px;
+}
