@@ -1,0 +1,27 @@
+<!-- extends from base template -->
+{% extends 'base.template.html' %}
+
+<!-- crispy form -->
+{% load crispy_forms_tags %}
+
+<!-- page title -->
+{% block page_title %} Login {%endblock%}
+
+{% block content %}   
+<div class="d-flex justify-content-center mt-5 mb-5">
+    <form method="POST" action="{% url 'login' %}" class="border border-info p-5">
+        {% csrf_token %}
+        
+        <p class="h4 mb-4 signup-header">LOGIN</p>
+        {{ form|crispy }}
+        
+      	<div class="text-center">
+        	<button class="btn btn-primary" type="submit">Login</button>
+        </div>
+
+		<div class="text-center loginButton">
+		    Don't have an account? <a href="/register" target="blank"><strong>register here</strong></a>!
+		</div>
+    </form>
+</div>
+{% endblock %}
