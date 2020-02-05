@@ -1,6 +1,8 @@
 <!-- extends from base template -->
 {% extends 'base.template.html' %}
 
+{% load static %}
+
 <!-- crispy form -->
 {% load crispy_forms_tags %}
 
@@ -25,6 +27,7 @@
 		    If you already have an account <a href="{% url 'login' %}"><strong>login</strong></a> instead.
 		</div>
     </form>
+    
 
 </div> 
 {% endblock %}
