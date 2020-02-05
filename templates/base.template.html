@@ -1,9 +1,5 @@
 {% load static %}
 
-<!-- crispy form -->
-{% load crispy_forms_tags %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,33 +11,30 @@
     <link href="https://fonts.googleapis.com/css?family=Unkempt&display=swap" rel="stylesheet">
     
     <!-- https://favicon.io/emoji-favicons -->
-    <link rel="icon" href="{% static 'images/treasure.png' %}"> 
-    
+    <link rel="icon" href="{% static 'images/book_shelf.png' %}"> 
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
+    <!-- Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
+    <!--// Add the new slick-theme.css if you want the default styling-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
+
     <!-- External CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"></script>
     
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-    <!-- Title -->
-    <title>Finding Treasures | {% block page_title %}{% endblock %}</title>
+    <title>Pick-A-Book | {% block page_title %}{% endblock %}</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         
         {% if request.user.is_authenticated %}
-            <a class="navbar-brand" href="/"><img class="homeLogo" src="{% static 'images/treasure.png' %}" alt="home logo"></a>
+            <a class="navbar-brand" href="/"><img class="homeLogo" src="{% static 'images/book_shelf.png' %}" alt="home logo"></a>
         {% endif %}
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
@@ -68,5 +61,19 @@
     <div class="container-fluid">
         {% block content %}{% endblock %}
     </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Slick JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{% static "js/script.js" %}"></script>
+    
 </body>
 </html>
