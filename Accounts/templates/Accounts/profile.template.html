@@ -1,0 +1,13 @@
+<!-- extends from base template -->
+{% extends 'base.template.html' %}
+
+{% load static %}
+
+<!-- page title -->
+{% block page_title %} Profile {% endblock %}
+
+{% block content %}
+    <h1>Profile</h1>
+    <p>Username: {{ current_user.username }}</p>
+    <p>Email: {{ current_user.email }}</p>
+{% endblock %}
