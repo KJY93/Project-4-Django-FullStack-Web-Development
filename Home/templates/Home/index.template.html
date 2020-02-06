@@ -1,0 +1,137 @@
+<!-- 040220 -->
+{% extends 'base.template.html' %}
+
+{% load static %}
+
+{% block page_title %} Home {% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        <!-- Home Banner -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jumbotron jumbotron-fluid" id="bannerBackground">
+                    <div class="container text-center">
+                        <h2>Pick a book and read to your heart's content today!</h2>
+                        
+                        <div class="mt-5 bannerContainer">
+                            <div>Free shipping for orders above $15</div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        <!-- Bestsellers -->
+        <h2>Bestsellers</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="bestSellers">
+                    {% for product in bestsellers %}
+                        <div>
+                            <a href="#">
+                                <div class="card itemImg">
+                                    <img src="{{ product.image.cdn_url }}" class="card-img-top" alt="book image for {{ product.title }}">
+                
+                                    <div class="card-body">
+                
+                                        <p class="card-text">
+                                            
+                                            <div>
+                                                {{ product.author.all |join:", " }}
+                                            </div>
+                                            
+                                            <div>
+                                                ${{ product.price }}
+                                            </div>
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+    
+                        
+                        
+                        
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- New and Trending -->
+        <h2>New and Trending</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="newAndTrending">
+                    {% for new_product_item in new_and_trending %}
+                        <div>
+                            <a href="#">
+                                <div class="card itemImg">
+                                    <img src="{{ new_product_item.image.cdn_url }}" class="card-img-top" alt="book image for {{ new_product_item.title }}">
+                
+                                    <div class="card-body">
+                
+                                        <p class="card-text">
+                                            
+                                            <div>
+                                                {{ new_product_item.author.all |join:", " }}
+                                            </div>
+                                            
+                                            <div>
+                                                ${{ new_product_item.price }}
+                                            </div>
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Best Deal Under $5.00 -->
+        <h2>Book Under $5.00</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="bestDeal">
+                    {% for deal_item in best_deal_book %}
+                        <div>
+                            <a href="#">
+                                <div class="card itemImg">
+                                    <img src="{{ deal_item.image.cdn_url }}" class="card-img-top" alt="book image for {{ deal_item.title }}">
+                
+                                    <div class="card-body">
+                
+                                        <p class="card-text">
+                                            
+                                            <div>
+                                                {{ deal_item.author.all |join:", " }}
+                                            </div>
+                                            
+                                            <div>
+                                                ${{ deal_item.price }}
+                                            </div>
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    
+    
+
+    
+
+    
+{% endblock %}
