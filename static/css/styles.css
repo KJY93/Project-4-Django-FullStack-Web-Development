@@ -6,6 +6,7 @@ body {
     color: #b0bf1a;
 }
 
+
 ul {
     padding-left: 20px;
 }
@@ -21,4 +22,52 @@ ul {
 .homeLogo {
     width: 32px;
     height: 32px;
+}
+
+.itemImg img {
+    /*max-height: 250px;*/
+    height: 260px;
+}
+
+.slickSlide {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#bannerBackground {
+    background:url('/static/images/reading.jpg') no-repeat center center;
+    height: 562px;
+    width: 100%;
+}
+
+.bannerContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.verticalDivider {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+/* the slides */
+/*https://stackoverflow.com/questions/30999076/how-add-spaces-between-slick-carousel-item*/
+.slick-slide {
+    margin: 0 10px;
+}
+
+/* the parent */
+
+.slick-list {
+    margin: 0 -10px;
+}
+
+/* fix height of card */
+.card {
+    height: 370px;
+}
+
+.slick-prev:before, .slick-next:before {
+    color:#ff4d4d;
 }
