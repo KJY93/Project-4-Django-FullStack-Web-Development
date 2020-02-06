@@ -25,8 +25,8 @@ ul {
 }
 
 .itemImg img {
-    /*max-height: 250px;*/
-    height: 260px;
+    /*max-height: 240px;*/
+    height: 240px;
 }
 
 .slickSlide {
@@ -64,10 +64,38 @@ ul {
 }
 
 /* fix height of card */
+/* modify height from 370 to 380 */
 .card {
-    height: 370px;
+    height: 380px;
 }
 
 .slick-prev:before, .slick-next:before {
     color:#ff4d4d;
+}
+
+
+.title, .author, .price {
+    font-size: 0.9em;
+}
+
+
+.card-body {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media (max-width: 575.98px) { 
+    .title, .author, .price {
+        font-size: 1.2em;
+    }
+    
+    .itemImg img {
+        /*max-height: 240px;*/
+        height: 270px;
+    }
+
+    .card {
+        height: 400px;
+    }
+    
 }
