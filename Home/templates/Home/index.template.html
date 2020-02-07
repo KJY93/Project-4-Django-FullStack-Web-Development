@@ -35,12 +35,15 @@
                                     <img src="{{ product.image.cdn_url }}" class="card-img-top" alt="book image for {{ product.title }}">
                 
                                     <div class="card-body">
+                                        
+                                        <!-- need to commit 0602 1158PM -->
+                                        <h5 class="card-title">{{ product.title }}</h5>
                 
                                         <p class="card-text">
                                             
-                                            <div class="title">
-                                                {{ product.title }}
-                                            </div>
+                                            <!--<div class="title">-->
+                                            <!--    {{ product.title }}-->
+                                            <!--</div>-->
                                             
                                             <div class="title">
                                                 by {{ product.author.all |join:", " }}
@@ -72,16 +75,13 @@
                     {% for new_product_item in new_and_trending %}
                         <div>
                             <a href="#">
-                                <div class="card itemImg">
+                                <div class="card itemImg homeBookSlider">
                                     <img src="{{ new_product_item.image.cdn_url }}" class="card-img-top" alt="book image for {{ new_product_item.title }}">
                 
                                     <div class="card-body">
-                
+                                        <h5 class="card-title">{{ new_product_item.title }}</h5>
+                                        
                                         <p class="card-text">
-                                            
-                                            <div class="title">
-                                                {{ new_product_item.title }}
-                                            </div>
                                             
                                             <div class="author">
                                                 by {{ new_product_item.author.all |join:", " }}
@@ -113,13 +113,11 @@
                                     <img src="{{ deal_item.image.cdn_url }}" class="card-img-top" alt="book image for {{ deal_item.title }}">
                 
                                     <div class="card-body">
-                
+                                        
+                                        <h5 class="card-title">{{ deal_item.title }}</h5>            
+
                                         <p class="card-text">
-                                            
-                                            <div class="title">
-                                                {{ deal_item.title }}
-                                            </div>
-                                            
+
                                             <div class="author">
                                                 by {{ deal_item.author.all |join:", " }}
                                             </div>
