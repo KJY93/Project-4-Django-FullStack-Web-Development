@@ -5,8 +5,12 @@ from django.contrib.auth.decorators import login_required
 
 def show_books(request):
     
-    all_books = Book.objects.all().order_by('publishing_year')
+    all_books = Book.objects.all()
+    genres = Genre.objects.all()
+    author = Author.objects.all()
     
     return render(request, 'Catalog/show_books.template.html', {
         'all_books':all_books,
+        'genres':genres,
+        'authors':author
     })
