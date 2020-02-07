@@ -1,0 +1,67 @@
+{% extends 'base.template.html' %}
+
+{% load static %}
+
+{% block page_title %} Books View {% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        
+
+        <div class="row">
+            <div class="col-sm-12 col-md-3 mt-3">
+                <div class="buttonFilterContainer">
+                    
+                    <div>
+                        <h6><strong>FILTER BY</strong></h6>
+                    </div>
+                
+
+                    <select id="genreFilter" multiple="multiple" title="Genre">
+                        {% for genre in genres %}
+                            <option value="{{ genre.category_description }}">{{ genre.category_description }}</option>
+                        {% endfor %} 
+                    </select>
+
+                </div>    
+                
+                
+                <div class="buttonFilterContainer mt-2">
+                    <select id="authorFilter" multiple="multiple" title="Author">
+                        {% for author in authors %}
+                            <option value="{{ author.name }}">{{ author.name }}</option>
+                        {% endfor %}  
+                    </select>
+                </div>
+            
+            </div>
+            
+            <div class="col-sm-12 col-md-9">
+                <div class="row">
+                    {% for book in all_books %}
+                        <div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+                            <div class="card itemImg" id="allBooks">
+                                <img class="card-img-top" src="{{ book.image.cdn_url }}" alt="book image for {{ book.title }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ book.title }}</h5>
+                                    <p class="card-text">
+                                        <div class="author">
+                                            by {{ book.author.all |join:", " }}
+                                        </div>
+                                        
+                                        <div class="price">
+                                            ${{ book.price }}
+                                        </div>                
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %} 
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
