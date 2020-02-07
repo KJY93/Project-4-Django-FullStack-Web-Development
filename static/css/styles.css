@@ -58,7 +58,6 @@ ul {
 }
 
 /* the parent */
-
 .slick-list {
     margin: 0 -10px;
 }
@@ -69,6 +68,10 @@ ul {
     height: 380px;
 }
 
+#allBooks {
+    width: 180px;
+}
+
 .slick-prev:before, .slick-next:before {
     color:#ff4d4d;
 }
@@ -77,7 +80,6 @@ ul {
 .title, .author, .price {
     font-size: 0.9em;
 }
-
 
 .card-body {
     padding-left: 10px;
@@ -97,5 +99,4 @@ ul {
     .card {
         height: 400px;
     }
-    
 }
