@@ -1,5 +1,30 @@
+<!-- 0602 -->
+<ul class="navbar-nav">
+    {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+            
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Shop All</a>
+              <a class="dropdown-item" href="#">Fantasy</a>
+              <a class="dropdown-item" href="#">Children</a>
+              <a class="dropdown-item" href="#">Mystery</a>
+              <a class="dropdown-item" href="#">Nonfiction</a>
+              <a class="dropdown-item" href="#">Classics</a>
+              <a class="dropdown-item" href="#">Biographies & Memoirs</a>
+              <a class="dropdown-item" href="#">Cookbooks</a>
+              <a class="dropdown-item" href="#">Fiction</a>
+              <a class="dropdown-item" href="#">Thriller</a>
+            </div>
+        </li>
+    {% endif %}
+</ul>
+
 <ul class="navbar-nav ml-auto mt-2">
     {% if request.user.is_authenticated %}
+	    <li class="nav-item"><a class="nav-link" href="/viewcart">Profile</a></li>
 	    {% if request.user.is_superuser %}
 		    <li class="nav-item">
 		        <a class="nav-link" href="/vieworder">View Order</a>
