@@ -68,8 +68,9 @@ ul {
     height: 380px;
 }
 
+/* 0802 change width */
 #allBooks {
-    width: 180px;
+    width: 190px;
 }
 
 .slick-prev:before, .slick-next:before {
@@ -84,6 +85,14 @@ ul {
 .card-body {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#searchButton, #resetButton {
+    width: 80px;
+}
+
+.filterForm {
+    padding-left: 0;
 }
 
 @media (max-width: 575.98px) { 
