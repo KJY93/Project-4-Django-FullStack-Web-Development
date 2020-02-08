@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'Catalog',
     'pyuploadcare.dj',
-    'Home'
+    'Home',
+    'django.contrib.sites',
+    'absoluteuri'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -169,3 +171,7 @@ UPLOADCARE = {
     'pub_key': UPLOADCARE_PUBLIC_KEY,
     'secret': UPLOADCARE_SECRET_KEY,
 }
+
+ABSOLUTEURI_PROTOCOL = 'https'
+
+SITE_ID = 1
