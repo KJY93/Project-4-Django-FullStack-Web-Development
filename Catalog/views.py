@@ -4,12 +4,29 @@ from django.contrib.auth.decorators import login_required
 import absoluteuri
 from django.http import JsonResponse
 
-# 0802
 from django.db import models
 
-def show_books(request):
+# 0902
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-    all_books = Book.objects.all()
+
+def show_books(request):
+    
+    all_books = Book.objects.all().order_by('-publishing_year')
+    
+    # pagination setup show 9 books per page
+    paginator = Paginator(all_books, 8)
+    page = request.GET.get('page')
+    
+    try:
+        book_qs = paginator.page(page)
+    except PageNotAnInteger:
+        book_qs = paginator.page(1)
+    except EmptyPage:
+        book_qs = paginator.page(paginator.num_pages)
+    # end of pagination setup
+
+    page = request.GET.get('page', 1)
     genres = Genre.objects.all()
     author = Author.objects.all()
 
@@ -17,6 +34,7 @@ def show_books(request):
         'all_books':all_books,
         'genres':genres,
         'authors':author,
+        'book_qs':book_qs,
         'path_uri': absoluteuri.build_absolute_uri(reverse('filter_book'))
     })
 
