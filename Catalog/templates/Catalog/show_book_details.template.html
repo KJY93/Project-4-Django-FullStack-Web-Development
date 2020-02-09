@@ -1,0 +1,58 @@
+{% extends 'base.template.html' %}
+
+{% load static %}
+
+{% block page_title %} Books Details {% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+            
+                <div id="bookDetailsContainer">
+                    <div class="text-center mb-2">
+                        {% for detail in book_detail %}
+                            <img src="{{ detail.image.cdn_url }}-/scale_crop/220x300/smart/" alt="book image for {{ detail.title }}">
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="ml-3">
+                        {% for detail in book_detail %}
+                            <h4>
+                                <strong>{{ detail.title }}</strong>
+                            </h4>
+                        
+                            <h6>
+                                by {{ detail.author.all |join:", " }}
+                            </h6>
+                            
+                            <div>
+                                Ratings: <span id="starRating"></span> <small>{{ average_ratings }}</small>
+                            </div>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+                
+            </div>
+                
+
+            <!--<div class="col-sm-12 col-md-3">-->
+            <!--    Hello-->
+            <!--</div>-->
+        </div>
+        
+        <hr>
+        
+        <div class="row">
+            
+        </div>
+        
+        <!-- pass in average ratings to star-ratings.js script to convert the ratings into stars -->
+        <script>
+            let average_ratings = "{{ average_ratings }}";
+        </script>
+        
+        <script src="{% static "js/star-ratings.js" %}"></script>
+    </div>
+{% endblock %}
