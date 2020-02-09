@@ -29,7 +29,7 @@ def show_books(request):
     page = request.GET.get('page', 1)
     genres = Genre.objects.all()
     author = Author.objects.all()
-
+    
     return render(request, 'Catalog/show_books.template.html', {
         'all_books':all_books,
         'genres':genres,
@@ -40,17 +40,22 @@ def show_books(request):
 
 def filter_book(request):
     
+    
+    # fixed chaining 0902
     if len(request.GET) == 0:
         filtered_book = Book.objects.all()
         
-    if ('genre_selected[]' in request.GET) and ('author_selected[]' in request.GET):
-        filtered_book = Book.objects.filter(genre__category_description__in=request.GET.getlist('genre_selected[]')) | Book.objects.filter(author__name__in=request.GET.getlist('author_selected[]'))
+    if ('genre_selected[]' in request.GET):
+        filtered_book = Book.objects.filter(genre__category_description__in=request.GET.getlist('genre_selected[]'))  
 
-    if ('genre_selected[]' in request.GET) and ('author_selected[]' not in request.GET):
+    if ('genre_selected[]' in request.GET):
         filtered_book = Book.objects.filter(genre__category_description__in=request.GET.getlist('genre_selected[]'))
         
-    if ('author_selected[]' in request.GET) and ('genre_selected[]' not in request.GET):
+    if ('author_selected[]' in request.GET):
         filtered_book = Book.objects.filter(author__name__in=request.GET.getlist('author_selected[]'))
+        
+    if ('from_price' in request.GET) or ('to_price' in request.GET):
+        filtered_book = Book.objects.filter(price__range=(request.GET.get('from_price'), request.GET.get('to_price'))) 
 
     # https://stackoverflow.com/questions/42980477/django-select-related-query-does-not-return-all-values-to-the-template
     # need to specifically list out all the values you want, it does not implicitly include foreign key by default
