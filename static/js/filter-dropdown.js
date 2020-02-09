@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         min: 0,
         max: 1000,
         from: 0,
+        to: 0,
         prefix: "$"
     });
     
@@ -55,10 +56,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             url: absolute_path_uri,
             type:'GET',
             data: {
-                // 0902
                 'from_price': from_price,
                 'to_price': to_price,
-                
                 'genre_selected': genre_selected,
                 'author_selected': author_selected
             },
