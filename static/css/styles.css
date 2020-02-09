@@ -95,6 +95,29 @@ ul {
     padding-left: 0;
 }
 
+/* 0902 to recommit 0921 */
+/* add in image container as well */
+.bookDetailsContainer, #imageContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+#imageContainer {
+    align-items: center;
+    justify-content: center;
+}
+
+#editionDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.editionDetailsContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
 @media (max-width: 575.98px) { 
     .title, .author, .price {
         font-size: 1.2em;
@@ -107,5 +130,10 @@ ul {
 
     .card {
         height: 400px;
+    }
+    
+    .bookDetailsContainer {
+        display: flex;
+        flex-direction: column;
     }
 }
