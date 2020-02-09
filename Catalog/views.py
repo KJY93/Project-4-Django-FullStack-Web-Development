@@ -6,12 +6,14 @@ from django.http import JsonResponse
 
 from django.db import models
 
-# 0902
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+# 0902
+import requests
+from django.conf import settings
 
 
 def show_books(request):
-    
     all_books = Book.objects.all().order_by('-publishing_year')
     
     # pagination setup show 9 books per page
@@ -39,7 +41,6 @@ def show_books(request):
     })
 
 def filter_book(request):
-    
     
     if len(request.GET) == 0:
         filtered_book = Book.objects.all()
@@ -80,3 +81,17 @@ def filter_book(request):
     'genre__category_description', 'description', 'publishing_year', 'price', 'image'))
     return JsonResponse(serialized, safe=False)
     
+# 0902
+def book_details(request, book_id):
+    book_detail = Book.objects.filter(id=int(book_id))
+    
+    book_ISBN = list(book_detail.values('ISBN'))[0]['ISBN']
+    
+    # get book ratings from GoodReads using GoodReads API
+    res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key":settings.GOODREADS_API_KEY, "isbns": book_ISBN})
+    average_ratings = res.json()["books"][0]["average_rating"]
+    
+    return render(request, 'Catalog/show_book_details.template.html', {
+        'book_detail':book_detail,
+        'average_ratings':average_ratings
+    })
