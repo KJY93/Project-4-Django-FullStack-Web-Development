@@ -2,6 +2,20 @@
 // Credit to Snappointments - https://github.com/snapappointments/bootstrap-select/
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    
+    // initialize the price slider range
+    $("#price_range").ionRangeSlider({
+        type: "double",
+        grid: true,
+        min: 0,
+        max: 1000,
+        from: 0,
+        prefix: "$"
+    });
+    
+    // save the slider instance to a variable so that it can be called later
+    // to reset the slider price range upon cliking the reset button and also to get the min and max price selected
+    var slider = $("#price_range").data("ionRangeSlider");
         
     // initialize the bootstrap-select plugin
     $("#genreFilter").selectpicker();
@@ -17,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
         $('#genreFilter').selectpicker({title: 'Genre'}).selectpicker('render');
         $('#authorFilter').selectpicker({title: 'Author'}).selectpicker('render');
+        
+        // Fire reset button for price range slider
+        slider.reset();
 
     });
     
@@ -26,13 +43,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // clear the #bookFilteredResult everytime the search button is clicked
         $("#bookFilteredResult").empty();
         
-        genre_selected = $('#genreFilter').val();
-        author_selected = $('#authorFilter').val();
+        // 0902 get price selected
+        // get min and max price selected
+        var from_price = slider.result.from;
+        var to_price = slider.result.to;
+
+        let genre_selected = $('#genreFilter').val();
+        let author_selected = $('#authorFilter').val();
 
         $.ajax({
             url: absolute_path_uri,
             type:'GET',
             data: {
+                // 0902
+                'from_price': from_price,
+                'to_price': to_price,
+                
                 'genre_selected': genre_selected,
                 'author_selected': author_selected
             },
