@@ -12,11 +12,12 @@
                 <div id="bookDetailsContainer">
                     <div class="text-center mb-2">
                         {% for detail in book_detail %}
-                            <img src="{{ detail.image.cdn_url }}-/scale_crop/220x300/smart/" alt="book image for {{ detail.title }}">
+                            <!-- added 10 pixels margin on both left and right sides using hspace -->
+                            <img hspace="10" src="{{ detail.image.cdn_url }}-/scale_crop/220x300/smart/" alt="book image for {{ detail.title }}">
                         {% endfor %}
                     </div>
                     
-                    <div class="ml-3">
+                    <div>
                         {% for detail in book_detail %}
                             <h4>
                                 <strong>{{ detail.title }}</strong>
