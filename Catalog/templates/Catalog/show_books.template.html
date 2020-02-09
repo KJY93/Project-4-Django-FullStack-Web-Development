@@ -41,7 +41,7 @@
                 <!-- by default if nothing is selected all the books result will be displayed -->
                 <!-- if filter is on, this corresponding div section will be updated with the filtered results -->
                 <div class="row" id="bookFilteredResult">
-                    {% for book in all_books %}
+                    {% for book in book_qs %}
                         <div class="col-sm-12 col-md-3 mt-3">
                             <div class="card-deck">
                                 <div class="card itemImg">
@@ -65,6 +65,27 @@
                 </div>
             </div>
         </div>
+        
+         <!--Pagination to display the pages of results returned -->
+        {% if book_qs.has_other_pages %}
+        <div class="pagination justify-content-center mt-2">
+            <span class="step-links">
+                {% if book_qs.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ book_qs.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ book_qs.number }} of {{ book_qs.paginator.num_pages }}.
+                </span>
+                
+                {% if book_qs.has_next %}
+                    <a href="?page={{ book_qs.next_page_number }}">next</a>
+                    <a href="?page={{ book_qs.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
     </div>
     
     <!-- pass in current URI of the browser -->
