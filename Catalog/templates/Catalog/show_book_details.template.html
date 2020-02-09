@@ -9,45 +9,81 @@
         <div class="row">
             <div class="col-sm-12 col-md-9">
             
-                <div id="bookDetailsContainer">
-                    <div class="text-center mb-2">
+                <div class="bookDetailsContainer">
+                    <div class="mb-2" id="imageContainer">
                         {% for detail in book_detail %}
-                            <!-- added 10 pixels margin on both left and right sides using hspace -->
-                            <img hspace="10" src="{{ detail.image.cdn_url }}-/scale_crop/220x300/smart/" alt="book image for {{ detail.title }}">
+                            <div>
+                                <img src="{{ detail.image.cdn_url }}-/scale_crop/250x300/smart/" alt="book image for {{ detail.title }}">
+                            </div>    
+                            
                         {% endfor %}
                     </div>
                     
-                    <div>
+                    <div class="editionDetailsContainer">
                         {% for detail in book_detail %}
-                            <h4>
-                                <strong>{{ detail.title }}</strong>
-                            </h4>
-                        
-                            <h6>
-                                by {{ detail.author.all |join:", " }}
-                            </h6>
-                            
-                            <div>
-                                Ratings: <span id="starRating"></span> <small>{{ average_ratings }}</small>
+                            <div class="editionDetails">
+                                
+                                <div>
+                                    <h4>
+                                        <strong>{{ detail.title }}</strong>
+                                    </h4>
+                                
+                                    <h6>
+                                        by {{ detail.author.all |join:", " }}
+                                    </h6>
+                                    
+                                    <div>
+                                        Ratings: <span id="starRating"></span> <small>{{ average_ratings }}</small>
+                                    </div>                                
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h4><strong>Edition Overview</strong></h4>
+                                    
+                                    <div>
+                                        <span>ISBN: <span>{{ detail.ISBN }}</span></span>
+                                    </div>
+                                    
+                                    <div>
+                                        <span>Release Date: <span>{{ detail.publishing_year }}</span></span>
+                                    </div>
+                                    
+                                    <div>
+                                        <span>Publisher: <span>{{ detail.publisher }}</span></span>
+                                    </div>
+                                    
+                                    <div>
+                                        <span>Pages: <span>{{ detail.pages }}</span></span>
+                                    </div>
+                                    
+                                    <div>
+                                        <span>Genre: <span>{{ book_genre }}</span></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h4>
+                                        <strong>Book Description</strong>
+                                    </h4>
+                                    
+                                    <div>
+                                        {{ detail_desc.description }}
+                                    </div>                                
+                                </div>
                             </div>
                         {% endfor %}
-                        
                     </div>
+
                 </div>
                 
             </div>
                 
 
-            <!--<div class="col-sm-12 col-md-3">-->
-            <!--    Hello-->
-            <!--</div>-->
+            <div class="col-sm-12 col-md-3">
+                Hello
+            </div>
         </div>
         
-        <hr>
-        
-        <div class="row">
-            
-        </div>
         
         <!-- pass in average ratings to star-ratings.js script to convert the ratings into stars -->
         <script>
@@ -55,5 +91,8 @@
         </script>
         
         <script src="{% static "js/star-ratings.js" %}"></script>
+        
+        <script src="{% static "js/book-image-recentering.js" %}"></script>
+
     </div>
 {% endblock %}
