@@ -81,9 +81,12 @@ def filter_book(request):
     'genre__category_description', 'description', 'publishing_year', 'price', 'image'))
     return JsonResponse(serialized, safe=False)
     
-# 0902
+
 def book_details(request, book_id):
     book_detail = Book.objects.filter(id=int(book_id))
+    
+    # 0902 need to commit 0446 PM
+    book_genre = list(book_detail.values('genre__category_description'))[0]['genre__category_description']
     
     book_ISBN = list(book_detail.values('ISBN'))[0]['ISBN']
     
@@ -93,5 +96,6 @@ def book_details(request, book_id):
     
     return render(request, 'Catalog/show_book_details.template.html', {
         'book_detail':book_detail,
-        'average_ratings':average_ratings
+        'average_ratings':average_ratings,
+        'book_genre': book_genre
     })
