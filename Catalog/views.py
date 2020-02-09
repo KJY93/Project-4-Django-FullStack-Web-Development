@@ -41,22 +41,39 @@ def show_books(request):
 def filter_book(request):
     
     
-    # fixed chaining 0902
     if len(request.GET) == 0:
         filtered_book = Book.objects.all()
         
     if ('genre_selected[]' in request.GET):
-        filtered_book = Book.objects.filter(genre__category_description__in=request.GET.getlist('genre_selected[]'))  
-
-    if ('genre_selected[]' in request.GET):
         filtered_book = Book.objects.filter(genre__category_description__in=request.GET.getlist('genre_selected[]'))
         
-    if ('author_selected[]' in request.GET):
-        filtered_book = Book.objects.filter(author__name__in=request.GET.getlist('author_selected[]'))
+        if ('author_selected[]' in request.GET):
+            filtered_book = Book.objects.filter(author__name__in=request.GET.getlist('author_selected[]'))
         
-    if ('from_price' in request.GET) or ('to_price' in request.GET):
-        filtered_book = Book.objects.filter(price__range=(request.GET.get('from_price'), request.GET.get('to_price'))) 
+        if ('from_price' in request.GET) or ('to_price' in request.GET):
+            if int(request.GET.get('to_price')) > 0:
+                filtered_book = Book.objects.filter(price__range=(int(request.GET.get('from_price')), int(request.GET.get('to_price')))) 
+      
+    if ('author_selected[]' in request.GET):          
+        filtered_book = Book.objects.filter(author__name__in=request.GET.getlist('author_selected[]'))
 
+        if ('genre_selected[]' in request.GET):
+            filtered_book = Book.objects.filter(genre__category_description__in=request.GET.getlist('genre_selected[]'))
+            
+        if ('from_price' in request.GET) or ('to_price' in request.GET):
+            if int(request.GET.get('to_price')) > 0:
+                filtered_book = Book.objects.filter(price__range=(int(request.GET.get('from_price')), int(request.GET.get('to_price')))) 
+                
+    if ('from_price' in request.GET) or ('to_price' in request.GET):
+        if int(request.GET.get('to_price')) > 0:
+            filtered_book = Book.objects.filter(price__range=(int(request.GET.get('from_price')), int(request.GET.get('to_price')))) 
+            
+        if ('author_selected[]' in request.GET):
+            filtered_book = Book.objects.filter(author__name__in=request.GET.getlist('author_selected[]'))
+            
+        if ('genre_selected[]' in request.GET):
+            filtered_book = Book.objects.filter(genre__category_description__in=request.GET.getlist('genre_selected[]'))
+                
     # https://stackoverflow.com/questions/42980477/django-select-related-query-does-not-return-all-values-to-the-template
     # need to specifically list out all the values you want, it does not implicitly include foreign key by default
     serialized = list(filtered_book.values('id', 'author__name', 'title', 'publisher', 'quantity', 'pages', 'ISBN', 
