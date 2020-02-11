@@ -63,9 +63,10 @@ ul {
 }
 
 /* fix height of card */
-/* modify height from 370 to 380 */
+/* modify height from 370 to 390 */
+/* 1002 */
 .card {
-    height: 380px;
+    height: 390px;
 }
 
 /* 0802 change width */
@@ -95,13 +96,6 @@ ul {
     padding-left: 0;
 }
 
-/* 0902 to recommit 0921 */
-/* add in image container as well */
-.bookDetailsContainer, #imageContainer {
-    display: flex;
-    flex-direction: row;
-}
-
 #imageContainer {
     align-items: center;
     justify-content: center;
@@ -111,12 +105,6 @@ ul {
     display: flex;
     flex-direction: column;
 }
-
-.editionDetailsContainer {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
 
 @media (max-width: 575.98px) { 
     .title, .author, .price {
@@ -130,10 +118,5 @@ ul {
 
     .card {
         height: 400px;
-    }
-    
-    .bookDetailsContainer {
-        display: flex;
-        flex-direction: column;
     }
 }
