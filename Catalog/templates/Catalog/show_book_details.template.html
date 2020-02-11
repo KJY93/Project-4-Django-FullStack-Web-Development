@@ -9,12 +9,10 @@
         <div class="row">
             <div class="col-sm-12 col-md-3">
             
-                <!--<div class="bookDetailsContainer">-->
                 <div>
                     <div class="mb-2">
                         {% for detail in book_detail %}
                             <div>
-                                <!-- resize height to 450px -->
                                 <img id="image" src="{{ detail.image.cdn_url }}" alt="book image for {{ detail.title }}">
                             </div>    
                         {% endfor %}
@@ -22,9 +20,7 @@
                 </div>
             </div>
             
-            <!-- new 1002 -->
             <div class="col-sm-12 col-md-6">
-                <!--<div class="editionDetailsContainer">-->
                 <div>
                     {% for detail in book_detail %}
                         <div class="editionDetails">
@@ -81,7 +77,6 @@
                 
             </div>
                 
-            <!-- to commit 0902 1142PM not commited yet -->
             <div class="col-sm-12 col-md-3">
                 {% for item in book_detail %}
                     <h4>
