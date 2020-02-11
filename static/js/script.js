@@ -90,6 +90,9 @@ $(document).ready(function() {
         ]
     });
     
+    // 0902 for bootstrap spinner
+    $("#quantity").inputSpinner();
+    
 })
 
 	
