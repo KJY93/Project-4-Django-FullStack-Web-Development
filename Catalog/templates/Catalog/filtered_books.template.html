@@ -1,0 +1,45 @@
+{% for book in book_qs %}
+    <div class="col-sm-12 col-md-3 mt-3">
+        <a href='{% url "book_details" book_id=book.id %}'>
+            <div class="card-deck">
+                <div class="card itemImg">
+                    <img class="card-img-top" src="{{ book.image.cdn_url }}" alt="book image for {{ book.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">
+                            <div class="author">
+                                by {{ book.author.all |join:", " }}
+                            </div>
+                            
+                            <div class="price">
+                                ${{ book.price }}
+                            </div>                
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+{% endfor %}    
+
+<div class="col-sm-12">
+    <div class="pagination justify-content-center mt-2">
+        <span class="step-links">
+            {% if book_qs.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ book_qs.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ book_qs.number }} of {{ book_qs.paginator.num_pages }}.
+            </span>
+            
+            {% if book_qs.has_next %}
+                <a href="?page={{ book_qs.next_page_number }}">next</a>
+                <a href="?page={{ book_qs.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
