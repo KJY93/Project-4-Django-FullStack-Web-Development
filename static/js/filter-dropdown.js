@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         let author_selected = $('#authorFilter').val();
 
         $.ajax({
-            url: absolute_path_uri,
+            url: "/catalog",
             type:'GET',
             data: {
                 'from_price': from_price,
@@ -61,59 +61,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 'genre_selected': genre_selected,
                 'author_selected': author_selected
             },
-            dataType: 'json',
+            dataType: 'html',
             success: function (response) {
-                
-                // declare an empty array to store the book title id
-                let book_title_id = [];
-                
-                // loop through the JSON response and save the book title id to the empty array declared above
-                for (let item = 0; item < response.length; item++) {
-                    book_title_id.push(response[item]['id']);
-                }
-                
-                let book_id_record = [];
-                let book_item_record = [];
-                          
-                for (let rec = 0; rec < response.length; rec++) {
-                    // save the book record to the array if the record is unique
-                    if (book_id_record.includes(response[rec]['id']) !== true) {
-                        book_id_record.push(response[rec]['id']);
-                        book_item_record.push({'id':response[rec]['id'] , 'author':[response[rec]['author__name']] ,'title':response[rec]['title'], 'price':response[rec]['price'], 'image':response[rec]['image']});                     
-                    }
-                    else {
-                        // loop through all the records
-                        // if multiple author exist for a book, proceed to add it to the author list of that book
-                        for (let j=0; j < book_item_record.length; j++) {
-                            if (response[rec]['id'] === book_item_record[j]['id']) {
-                                book_item_record[j]['author'].push(response[rec]['author__name']);
-                            } 
-                        }
-                    }
-                }
-                
-                // loop the book_item_record and populate the products page
-                for (let k = 0; k < book_item_record.length; k++) {
-                    $("#bookFilteredResult").append(
-                        `<div class="col-sm-12 col-md-6 col-lg-4 mt-3">
-                            <div class="card itemImg" id="allBooks">
-                                <img class="card-img-top" src=${book_item_record[k]['image']} alt="book image for ${book_item_record[k]['title']}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${book_item_record[k]['title']}</h5>
-                                    <p class="card-text">
-                                        <div class="author">
-                                            by ${book_item_record[k]['author']}
-                                        </div>
-                                        
-                                        <div class="price">
-                                            $${book_item_record[k]['price']}
-                                        </div>                
-                                    </p>
-                                </div>
-                            </div>
-                        </div>`                    
-                    );
-                }
+                console.log(response)
+                $('#bookFilteredResult').html(response);
             }
         });
     });
