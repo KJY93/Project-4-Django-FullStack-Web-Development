@@ -49,7 +49,7 @@ def show_books(request):
 
     # in case of ajax call update show_books.template.html page
     if request.is_ajax():
-        html = render_to_string('Catalog/filtered_products.html', {'book_qs': book_qs})
+        html = render_to_string('Catalog/filtered_books.template.html', {'book_qs': book_qs})
         return HttpResponse(html)
 
     return render(request, 'Catalog/show_books.template.html', {
