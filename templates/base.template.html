@@ -26,15 +26,18 @@
     <!--// Add the new slick-theme.css if you want the default styling-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"/>
     
-    
-    <!-- 0902 Range slider CSS -->
+    <!-- Range slider CSS -->
     <!--Plugin CSS file with desired skin-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
     <!-- External CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"></script>
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet" />
+    
+    <!-- Datatables (datatables.net) CSS -->
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" rel="stylesheet">
     
     <title>Pick-A-Book | {% block page_title %}{% endblock %}</title>
 </head>
@@ -87,8 +90,25 @@
     <!--Plugin JavaScript file 0902 Range Slider -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script> 
     
+    <!-- Bootstrap spinner 090220 to commit 10:50PM -->
+    <!--https://github.com/shaack/bootstrap-input-spinner/blob/master/src/bootstrap-input-spinner.js-->
+    <script src="{% static 'js/bootstrap-input-spinner.js' %}"></script>
+    
+    <!-- Font Awesome 0902 update to v12--> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+    
+    <!-- Datatables (datatables.net) -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> 
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>     
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> 
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script> 
+    
     <!-- Custom JS -->
-    <script src="{% static "js/script.js" %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    
+    {% block scripts %}
+    {% endblock %}
+
     
 </body>
 </html>
