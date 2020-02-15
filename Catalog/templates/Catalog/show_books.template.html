@@ -72,8 +72,6 @@
                     
                                 
                      <!--Pagination to display the pages of results returned -->
-                    
-                    <!--{% if book_qs.has_other_pages %}-->
                     <div class="col-sm-12">
                         <div class="pagination justify-content-center mt-2">
                             <span class="step-links">
@@ -93,26 +91,18 @@
                             </span>
                         </div>
                     </div>
-            
-                    <!--{% endif %}-->
                 </div>
             </div>
         </div>
-        
-
-        
-
-
-        
-
     </div>
     
     <!-- pass in current URI of the browser -->
     <script>
         let absolute_path_uri = "{{ path_uri }}";
     </script>
-
-    <script src="{% static "js/filter-dropdown.js" %}"></script>
+    
+    <!-- 130220 change "" to i -->
+    <script src="{% static 'js/filter-dropdown.js' %}"></script>
     
 {% endblock %}
 
