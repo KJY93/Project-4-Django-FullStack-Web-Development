@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'pyuploadcare.dj',
     'Home',
     'django.contrib.sites',
-    'absoluteuri'
+    'absoluteuri',
+    'Carts'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Carts.contexts.cart_contents'
             ],
         },
     },
