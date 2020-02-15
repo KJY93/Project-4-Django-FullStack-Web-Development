@@ -37,13 +37,13 @@ def register(request):
         register_form = UserRegistrationForm(request.POST)
 
         if register_form.is_valid():
-            register_form.save()
+            register_form.save()    
             
-            user = register_form.cleaned_data.get('username')
-            
+            user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
             messages.success(request, 'Registration successful!')
+            
             auth.login(request=request, user=user)
-        
+            
             return redirect(reverse('show_books'))
     else:
         register_form = UserRegistrationForm()
