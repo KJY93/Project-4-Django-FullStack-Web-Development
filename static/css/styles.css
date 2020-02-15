@@ -117,6 +117,18 @@ ul {
     height: 100%; 
 }
 
+.addToCartBookImg {
+    width: 10vw;
+}
+
+.deleteButton, .editButton {
+    width: 45px;
+} 
+
+.qtyContainer {
+    width: 50px;
+}
+
 @media (max-width: 575.98px) { 
     .title, .author, .price {
         font-size: 1.2em;
