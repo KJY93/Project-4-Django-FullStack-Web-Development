@@ -19,9 +19,15 @@
                     <div>
                         <select id="genreFilter" multiple="multiple" title="Genre">
                             {% for genre in genres %}
-                                <option value="{{ genre.category_description }}">{{ genre.category_description }}</option>
+                                <!-- 160220 add if else -->
+                                {% if genre.category_description == category %}
+                                    <option value="{{ genre.category_description }}" selected>{{ genre.category_description }}</option>
+                                {% else %}
+                                    <option value="{{ genre.category_description }}">{{ genre.category_description }}</option>
+                                {% endif %}
                             {% endfor %} 
                         </select>
+
 
                         <select class="mt-2" id="authorFilter" multiple="multiple" title="Author">
                             {% for author in authors %}
@@ -99,6 +105,9 @@
     <!-- pass in current URI of the browser -->
     <script>
         let absolute_path_uri = "{{ path_uri }}";
+        
+        // add in category
+        let category = "{{ category }}"
     </script>
     
     <script src="{% static 'js/filter-dropdown.js' %}"></script>
