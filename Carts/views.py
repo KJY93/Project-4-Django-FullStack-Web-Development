@@ -7,14 +7,26 @@ from django.core import serializers
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
-# 120220
 def view_cart(request):
     
     # retrieve shopping cart info
     cart = request.session.get('shopping_cart', {})
     
+    shopping_cart_list = list(cart.values())
+    
+    # total amount payable 
+    total_amount = 0
+    
+    for elem in shopping_cart_list:
+        total_amount = total_amount + float(elem['total_price'])
+        total_amount = total_amount
+    
+    # fix decimal points to 2
+    total_amount = "{:.2f}".format(total_amount)
+
     return render(request, 'Carts/view_cart.template.html', {
-        'shopping_cart':cart
+        'shopping_cart':cart,
+        'total_amount': total_amount
     })
     
 def add_to_cart(request, book_id):
@@ -137,10 +149,22 @@ def update_cart(request, book_id):
     # append the total items in the cart to the shopping cart list
     new_total_quantity = 0
     
+    # total amount payable 
+    new_total_amount = 0
+    
     for elem in shopping_cart:
         new_total_quantity = (new_total_quantity + int(elem['quantity_ordered']))
         new_total_quantity = new_total_quantity
+        
+        new_total_amount = new_total_amount + float(elem['total_price'])
+        new_total_amount = new_total_amount
+    
+    # fix decimal points to 2
+    new_total_amount = "{:.2f}".format(new_total_amount)
+    
     
     shopping_cart.append({'new_total_quantity': new_total_quantity})
-
+    
+    shopping_cart.append({'new_total_amount': new_total_amount})
+    
     return JsonResponse(shopping_cart, safe=False)
