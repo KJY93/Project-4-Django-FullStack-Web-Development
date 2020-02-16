@@ -27,20 +27,20 @@ def get_index(request):
     
     # loop through the Book object and filter out the top 10 best sellers by book id from above
     bestsellers = Book.objects.filter(pk__in=book_id_list)
-
-    # new and trending books (last 3 months up to current)
+    
+    # new and trending books (last 6 months up to current)
     current_year_month_date = datetime.datetime.now()
-    last_3_month = current_year_month_date + dateutil.relativedelta.relativedelta(months=-3)
+    last_6_month = current_year_month_date + dateutil.relativedelta.relativedelta(months=-6)
 
     current_year = current_year_month_date.year
     current_month = current_year_month_date.month
     current_day = current_year_month_date.day
     
-    last_3_month_year = last_3_month.year
-    last_3_month_month = last_3_month.month
-    last_3_month_day = last_3_month.day   
+    last_6_month_year = last_6_month.year
+    last_6_month_month = last_6_month.month
+    last_6_month_day = last_6_month.day   
 
-    new_and_trending = Book.objects.filter(publishing_year__gte=datetime.date(last_3_month_year, last_3_month_month, last_3_month_day),
+    new_and_trending = Book.objects.filter(publishing_year__gte=datetime.date(last_6_month_year, last_6_month_month, last_6_month_day),
                                 publishing_year__lte=datetime.date(current_year, current_month, current_day))
     
     # best deals book
