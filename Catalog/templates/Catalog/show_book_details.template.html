@@ -5,7 +5,8 @@
 {% block page_title %} Books Details {% endblock %}
 
 {% block content %}
-    <div class="container-fluid mt-3">
+
+    <div class="container-fluid mt-3 mb-3">
         <div class="row">
             <div class="col-sm-12 col-md-3">
             
@@ -92,16 +93,25 @@
                     </div>
 
                     <div class="mt-1">
-                        <form method="POST" action='{% url "add_to_cart" book_id=item.id %}' class="form-inline">
-                            {% csrf_token %}
-                            <div id="quantityContainer">
-                                <label for="quantity" id="quantityLabel">Quantity: </label>
-                                <input type="number" value="1" min="1" max="{{ item.quantity }}" step="1" id="quantity" name="quantity" required/>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-warning mt-3">Add To Cart</button>
-
-                        </form>
+                        
+                        {% if request.user.is_authenticated %}
+                            <!-- check if book is in stock -->
+                            {% if item.quantity > 0 %}
+                                <form method="POST" action='{% url "add_to_cart" book_id=item.id %}' class="form-inline">
+                                    {% csrf_token %}
+                                    <div id="quantityContainer">
+                                        <label for="quantity" id="quantityLabel">Quantity: </label>
+                                        <input type="number" value="1" min="1" max="{{ item.quantity }}" step="1" id="quantity" name="quantity" required/>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-warning mt-3">Add To Cart</button>
+                                </form>
+                            {% else %}
+                                <h6>We are currently replenishing our stock!</h6>
+                            {% endif %}
+                        {% else %}
+                            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login to start shopping!</a>
+                        {% endif %}
                     </div>
                     
                 {% endfor %}
