@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     $(`#totalBookPrice${response[i]['row_id']}`).text("$" + response[i]["total_price"]);
                     $(`#qtyAvailable${response[i]['row_id']}`).text(response[i]["available_quantity"] + " available");
                     $("#qtyInCart").text(response[row_of_record]['new_total_quantity']);
+                    $("#total_payable_amount").text(response[row_of_record+1]['new_total_amount']);
                 }
             });
             
