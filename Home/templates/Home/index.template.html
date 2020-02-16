@@ -7,7 +7,8 @@
 
 {% block content %}
     
-    <div class="container-fluid mt-3">
+    <!-- 1602 mb-3 -->
+    <div class="container-fluid mt-3 mb-3">
         <!-- Home Banner -->
         <div class="row">
             <div class="col-sm-12">
@@ -32,7 +33,7 @@
  
                     {% for product in bestsellers %}
                         <div>
-                            <a href="#">
+                            <a href='{% url "book_details" book_id=product.id %}'>
                                 <div class="card itemImg">
                                     <img src="{{ product.image.cdn_url }}" class="card-img-top" alt="book image for {{ product.title }}">
                 
@@ -65,13 +66,13 @@
         </div>
         
         <!-- New and Trending -->
-        <h2>New and Trending</h2>
+        <h2 class="mt-4">New and Trending</h2>
         <div class="row">
             <div class="col-sm-12">
                 <div class="newAndTrending">
                     {% for new_product_item in new_and_trending %}
                         <div>
-                            <a href="#">
+                            <a href='{% url "book_details" book_id=new_product_item.id %}'>
                                 <div class="card itemImg homeBookSlider">
                                     <img src="{{ new_product_item.image.cdn_url }}" class="card-img-top" alt="book image for {{ new_product_item.title }}">
                 
@@ -99,13 +100,13 @@
         </div>
         
         <!-- Best Deal Under $5.00 -->
-        <h2>Book Under $5.00</h2>
+        <h2 class="mt-4">Book Under $5.00</h2>
         <div class="row">
             <div class="col-sm-12">
                 <div class="bestDeal">
                     {% for deal_item in best_deal_book %}
                         <div>
-                            <a href="#">
+                            <a href='{% url "book_details" book_id=deal_item.id %}'>
                                 <div class="card itemImg">
                                     <img src="{{ deal_item.image.cdn_url }}" class="card-img-top" alt="book image for {{ deal_item.title }}">
                 
