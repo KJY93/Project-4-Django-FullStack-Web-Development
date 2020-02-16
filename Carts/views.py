@@ -85,6 +85,16 @@ def add_to_cart(request, book_id):
         # message to display items successfully added to cart
         messages.success(request, 'Item(s) added to shopping cart!')
     
+    else:
+        cart = request.session.get('shopping_cart', {})
+        cart[book_id]['quantity_ordered'] = cart[book_id]['quantity_ordered'] + 1
+        
+        request.session['shopping_cart'] = cart
+        
+        # message to display items successfully added to cart
+        messages.success(request, 'Item(s) added to shopping cart!')        
+        
+    
     return redirect(reverse('get_index'))
     
 def remove_from_cart(request, book_id):
