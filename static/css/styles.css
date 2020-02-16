@@ -134,6 +134,12 @@ ul {
     justify-content: flex-end;
 }
 
+#updateFormContainer {
+    border-style: solid;
+    border-width: thick;
+    border-color: #117a8b;
+}
+
 @media (max-width: 575.98px) { 
     .title, .author, .price {
         font-size: 1.2em;
