@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'Home',
     'django.contrib.sites',
     'absoluteuri',
-    'Carts'
+    'Carts',
+    # 150220
+    'Order'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -161,11 +163,11 @@ AUTHENTICATION_BACKENDS = (
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
-# STRIPE test keys
-STRIPE_PUBLISHABLE_KEY = 'pk_test_mWhDyJTDwrTQVT54mmvhvWAj00GaD0wdPj'
-STRIPE_SECRET_KEY = 'sk_test_yC8Kbz7FqPapZaJmyBADK7uR00GzrfIdJi'
+# STRIPE API Key
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
-# 040220
+# UPLOADCARE API Key
 UPLOADCARE_PUBLIC_KEY = os.environ['UPLOADCARE_PUBLIC_KEY']
 UPLOADCARE_SECRET_KEY = os.environ['UPLOADCARE_SECRET_KEY']
 
@@ -174,7 +176,7 @@ UPLOADCARE = {
     'secret': UPLOADCARE_SECRET_KEY,
 }
 
-# 090220
+# GOODREADS API Key
 GOODREADS_API_KEY = os.environ.get('GOODREADS_API_KEY')
 
 ABSOLUTEURI_PROTOCOL = 'https'
