@@ -1,13 +1,37 @@
 <!-- extends from base template -->
 {% extends 'base.template.html' %}
 
+<!-- 160220 1137PM include crispy tag -->
+{% load crispy_forms_tags %}
+
 {% load static %}
 
 <!-- page title -->
 {% block page_title %} Profile {% endblock %}
 
 {% block content %}
-    <h1>Profile</h1>
-    <p>Username: {{ current_user.username }}</p>
-    <p>Email: {{ current_user.email }}</p>
+    <div class="row justify-content-center align-items-center h-100 mt-3">
+        <div class="col-sm-12 col-md-6" id="updateFormContainer">
+            <div>
+                <h3><strong>Profile Info</strong></h3>
+                <p>Username: {{ current_user.username }}</p>
+                <p>Email: {{ current_user.email }}</p>
+            </div>
+            
+            <hr>
+            
+            <div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="mb-4"><strong>Update Profile</strong></legend>
+                        {{ u_form|crispy }}
+                    </fieldset>
+                    <div class="form-group text-center">
+                        <button class="btn btn-info" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
