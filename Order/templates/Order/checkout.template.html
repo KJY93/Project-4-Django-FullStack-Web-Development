@@ -1,0 +1,49 @@
+{% extends 'base.template.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block page_title %} Checkout {% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-center align-items-center h-100 mt-3">
+        <div class="col-sm-12 col-md-6">
+            <form method="POST" id="paymentForm" action="{% url 'checkout' %}">
+                <div class="form-group">
+                    <legend><strong>Personal Details</strong></legend>
+                    {{ order_form | crispy }}
+                </div>
+                
+                <div class="mt-4">
+                    <hr>
+                </div>
+                
+                <div class="form-group">
+                    <legend><strong>Credit Card Details</strong></legend>
+                    {{ payment_form | crispy }}
+                </div>
+                
+                {% csrf_token %}
+                
+                <input type='hidden' value='{{amount}}' name='amount'/>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mb-3" id="submit_payment_btn" name="commit">Submit Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        Stripe.publishableKey = '{{ publishable }}';
+        // ]]>
+    </script>
+    <script src="{% static "js/stripe.js" %}"></script>
+{% endblock %}
