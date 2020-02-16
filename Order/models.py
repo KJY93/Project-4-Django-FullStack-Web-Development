@@ -1,4 +1,7 @@
 from django.db import models
+from Accounts.models import NewUser
+
+from Catalog.models import Book
 
 class Charge(models.Model):
     full_name = models.CharField(max_length=50, blank=False)
@@ -13,3 +16,34 @@ class Charge(models.Model):
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
+        
+class Order(models.Model):
+    STATUS_CHOICES = (
+        ('processing', 'Processing'),
+        ('dispatched', 'Dispatched'),
+        ('delivered', 'Delivered')
+    )
+    
+    customer = models.ForeignKey(NewUser, on_delete=models.SET_NULL, null=True)
+    stripe_token = models.CharField(max_length=256)
+    status = models.CharField(choices=STATUS_CHOICES, default='Processing', max_length=20)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.customer}"
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+    quantity = models.PositiveIntegerField(default=1)
+    product = models.ForeignKey(Book, related_name='order_items', on_delete=models.CASCADE)
+    
+    def get_cost(self):
+        return self.price * self.quantity
+    
+    def __str__(self):
+        return f"Customer: {self.order} - Product: {self.product} - Quantity: {self.quantity} - Price: ${self.price}"
+
+
+
