@@ -1,16 +1,33 @@
 from django.shortcuts import render
 # from Catalog.models import Book, BookCover
 from Catalog.models import Book
+from Order.models import OrderItem
 import datetime
 # from datetime import date, timedelta
 
 import dateutil.relativedelta
 
 def get_index(request):
-    # bestsellers = Book.objects.all().order_by('book_ratings')
-    # need to edit this later to follow the the orderItem
-    bestsellers = Book.objects.all()
+    # get the previously ordered items
+    ordered_items_list = []
+    for product in Book.objects.all():
+        if len(product.order_items.all()) > 0:
+            ordered_items_list.append(sorted([dict(quantity=sum([item.quantity for item in product.order_items.all()]), book_id=product.id)],
+            key=lambda k: k['quantity'], reverse=True))
+            
+    # filter out top 10 bestselling books
+    ordered_items_list = ordered_items_list[0:10]
     
+    # get associated book id
+    book_id_list = []
+    
+    # loop through the above dictionary and get only the book id
+    for bk_id in ordered_items_list:
+        book_id_list.append(bk_id[0]['book_id'])
+    
+    # loop through the Book object and filter out the top 10 best sellers by book id from above
+    bestsellers = Book.objects.filter(pk__in=book_id_list)
+
     # new and trending books (last 3 months up to current)
     current_year_month_date = datetime.datetime.now()
     last_3_month = current_year_month_date + dateutil.relativedelta.relativedelta(months=-3)
