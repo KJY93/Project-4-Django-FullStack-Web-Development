@@ -129,6 +129,11 @@ ul {
     width: 50px;
 }
 
+#placeOrderButton {
+    display: flex;
+    justify-content: flex-end;
+}
+
 @media (max-width: 575.98px) { 
     .title, .author, .price {
         font-size: 1.2em;
