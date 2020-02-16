@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
-from .forms import UserLoginForm, UserRegistrationForm
 
+from .forms import UserLoginForm, UserRegistrationForm, UserUpdateForm
+
+@login_required
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'You have successfully logged out.')
-    return redirect(reverse('show_books'))
+    return redirect(reverse('get_index'))
     
 def login(request):
     if request.method == "POST":
@@ -24,7 +25,8 @@ def login(request):
             if user:
                 auth.login(request=request, user=user)
                 messages.success(request, 'You have successfully logged in.')
-                return redirect(reverse('show_books'))
+                # change to get_index 160220
+                return redirect(reverse('get_index'))
             else:
                 login_form.add_error(None, 'Invalid username or password.')
     else:
@@ -44,13 +46,31 @@ def register(request):
             
             auth.login(request=request, user=user)
             
-            return redirect(reverse('show_books'))
+            # change to get_index 160220
+            return redirect(reverse('get_index'))
     else:
         register_form = UserRegistrationForm()
     return render(request, 'Accounts/register.template.html', {'form':register_form})
     
 @login_required
-def profile(request):
+def view_profile(request):
+
+    if request.method == "POST":
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        
+        if u_form.is_valid():
+            u_form.save()
+            messages.success(request, 'Your profile is succesfully updated!')  
+            return redirect(reverse('view_profile'))
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        
     return render(request, 'Accounts/profile.template.html', {
+        'u_form': u_form,
         'current_user':request.user
     })
+
+        
+        
+    
+    
