@@ -10,27 +10,40 @@
 {% block page_title %} Profile {% endblock %}
 
 {% block content %}
-    <div class="row justify-content-center align-items-center h-100 mt-3">
-        <div class="col-sm-12 col-md-6" id="updateFormContainer">
-            <div>
-                <h3><strong>Profile Info</strong></h3>
-                <p>Username: {{ current_user.username }}</p>
-                <p>Email: {{ current_user.email }}</p>
-            </div>
-            
-            <hr>
-            
-            <div>
-                <form method="POST">
-                    {% csrf_token %}
-                    <fieldset class="form-group">
-                        <legend class="mb-4"><strong>Update Profile</strong></legend>
-                        {{ u_form|crispy }}
-                    </fieldset>
-                    <div class="form-group text-center">
-                        <button class="btn btn-info" type="submit">Update</button>
+    <!-- 170220 added container-fluid class -->
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center h-100 mt-3 mb-3">
+            <div class="col-sm-12 col-md-6" id="updateFormContainer">
+                <!-- add class 170220 mt-2 -->
+                <h4 class="mt-2"><strong><u>User Profile</u></strong></h4>
+                <div class="row">
+                    <!-- 170220 try -->
+                    <div class="col-sm-12 col-md-6">    
+                        <div>First Name: {{ current_user.first_name }}</div>
+                        <div>Last Name: {{ current_user.last_name }}</div>
                     </div>
-                </form>
+                    
+                    <div class="col-sm-12 col-md-6"> 
+                        <div>Username: {{ current_user.username }}</div>
+                        <div>Email: {{ current_user.email }}</div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <!-- 170220 remove mb4 class -->
+                            <legend><strong><u>Update User Profile</u></strong></legend>
+                            {{ u_form|crispy }}
+                        </fieldset>
+                        <div class="form-group text-center">
+                            <button class="btn btn-info" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
