@@ -25,10 +25,12 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError('The email address is already in use.')
         return user_email
         
+    
+# 160220 1137PM
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField(required=True, help_text="Required. Enter a valid email address.", label="Email address")
     
     class Meta:
         model = NewUser
-        fields = ['username', 'email']
+        fields = ['username', 'email', 'first_name', 'last_name']
