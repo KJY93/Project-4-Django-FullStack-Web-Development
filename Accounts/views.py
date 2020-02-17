@@ -4,6 +4,10 @@ from django.contrib import auth, messages
 
 from .forms import UserLoginForm, UserRegistrationForm, UserUpdateForm
 
+# 170220
+from django.contrib.auth import get_user_model
+
+
 @login_required
 def logout(request):
     auth.logout(request)
@@ -36,10 +40,23 @@ def login(request):
     
 def register(request):
     if request.method == "POST":
+
+        User = get_user_model()
+
         register_form = UserRegistrationForm(request.POST)
 
         if register_form.is_valid():
-            register_form.save()    
+            
+            username = register_form.cleaned_data['username']
+            password = register_form.cleaned_data['password1']
+            firstname = register_form.cleaned_data['firstname']
+            lastname = register_form.cleaned_data['lastname']
+            email = register_form.cleaned_data['email']
+            
+            user = User.objects.create_user(username,email=email, password=password)
+            user.first_name = firstname  # use the correct attribute here.
+            user.last_name = lastname  # use the correct attribute here.
+            user.save()
             
             user = auth.authenticate(username=request.POST['username'], password=request.POST['password1'])
             messages.success(request, 'Registration successful!')
@@ -51,6 +68,7 @@ def register(request):
     else:
         register_form = UserRegistrationForm()
     return render(request, 'Accounts/register.template.html', {'form':register_form})
+
     
 @login_required
 def view_profile(request):
