@@ -136,7 +136,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Login URL
-LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
 
 # message tags
 MESSAGE_TAGS = {
@@ -183,3 +183,8 @@ ABSOLUTEURI_PROTOCOL = 'https'
 
 SITE_ID = 1
 
+# 180220 Mailgun
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+MAILGUN_ACCESS_KEY = os.environ['MAILGUN_ACCESS_KEY']
+MAILGUN_SERVER_NAME = os.environ['MAILGUN_DOMAIN']
+DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
