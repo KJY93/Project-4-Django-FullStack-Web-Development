@@ -20,11 +20,17 @@ from django.urls import path, include
 from django.conf import settings # new
 from django.conf.urls.static import static # new
 
+# 170220 for password reset
+# follow Corey Schafer
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('Accounts.urls')),
     path('catalog/', include('Catalog.urls')),
     path('home/', include('Home.urls')),
     path('carts/', include('Carts.urls')),
-    path('checkout/', include('Order.urls'))
+    path('checkout/', include('Order.urls')),
+    path('', include('Home.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
