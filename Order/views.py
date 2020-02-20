@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
+# 160220 login_ required
+from django.contrib.auth.decorators import login_required
 from .forms import OrderForm, PaymentForm
 from django.conf import settings
 from django.contrib import messages
@@ -6,9 +8,15 @@ from Catalog.models import Book
 from .models import OrderItem, Order
 import stripe 
 
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+# 160220
+@login_required
 def checkout(request):
     cart = list((request.session.get('shopping_cart', {})).values())
 
@@ -58,7 +66,31 @@ def checkout(request):
                         # update stock for each product
                         product.quantity = product.quantity - quantity
                         product.save()
+                        
+                    # send order confirmation email to user 160220
+                    email_subject = 'Your Pick A Book\'s Order Receipt'
+                    sender_email = settings.DEFAULT_FROM_EMAIL
+                    recipient_email = [sender_email, request.user.email]
                     
+                    # get order ID
+                    object_record = Order.objects.filter(stripe_token=stripeToken)
+                    order_id = list(object_record.values())[0]['id']
+                    
+            
+                    context = {
+                        'user': request.user,
+                        'order_total': total_amount,
+                        'shopping_cart': cart,
+                        'order_id': order_id
+                    }
+                    
+                    # create and send the email
+                    html_notification_message = render_to_string('Order/order_confirmation.template.html', context)
+                    plain_message = strip_tags(html_notification_message)
+                    msg = EmailMultiAlternatives(email_subject, plain_message, sender_email, recipient_email)
+                    msg.attach_alternative(html_notification_message, "text/html")
+                    msg.send()
+
                     # empty the shopping cart 
                     request.session['shopping_cart'] = {}
                 
@@ -102,6 +134,7 @@ def checkout(request):
             
             except Exception as e:
             	# Send email to ourselves 
+            	print(e)
             	messages.error(request, "An error occured. We have been notified and are currently looking into it.")
             	return redirect("get_index")
 
