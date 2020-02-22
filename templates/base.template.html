@@ -67,10 +67,68 @@
             </div>
         {% endfor %}    
     {% endif %}
+    
+    <div class="container-fluid mb-3" id="mainContainer">
+        <div id="contentContainer">
+            {% block content %}{% endblock %}
+        </div>
 
-    <div class="container-fluid">
-        {% block content %}{% endblock %}
     </div>
+    
+    <footer class="bg-light" id="footerContainer">
+    	<div>        		
+    	    <div class="row">
+    			<div class="col-sm-12 col-md-3">
+    				<div class="mt-3"><strong>GET TO KNOW US</strong></div>
+    				<div class="separator"></div>
+    				<div><a href="{% url 'about_us' %}">About Us</a></div>
+    				<div><a href="{% url 'our_service' %}">Our Services</a></div>
+    			</div>
+    
+    			<div class="col-sm-12 col-md-3">
+    				<div class="mt-3"><strong>GET IN TOUCH</strong></div>
+    				<div class="separator"></div>
+    				<div><a href="{% url 'contact_us' %}">Contact Us</a></div>
+    			</div>
+    
+    			<div class="col-sm-12 col-md-3">
+    				<div class="mt-3"><strong>FIND US ON</strong></div>
+    				<div class="separator"></div>
+    				<div>
+    					<a href="https://www.facebook.com/"><i class="fab fa-facebook social-media-logo"></i></a>
+    					<a href="https://www.instagram.com/"><i class="fab fa-instagram social-media-logo"></i></a>
+    					<a href="https://twitter.com/login"><i class="fab fa-twitter social-media-logo"></i></a>
+    				</div>
+    			</div>
+    
+    			<div class="col-sm-12 col-md-3">
+    				<div class="mt-3"><strong>SUBSCRIBE TO OUR NEWSLETTER</strong></div>
+    
+    				<div class="separator"></div>
+    				
+    				<form method="post" action="">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Your Email" required>
+                                
+                                <button type="submit" class="btn btn-primary  input-group-append" value="submit">SUBMIT</button>
+                               
+                            </div>
+    				</form>
+    				
+    			</div>	
+    		</div>
+    		
+    		<div class="row">
+    		    <div class="col-sm-12">
+    		        <div class="text-center">
+    		            <small>Copyright <i class="far fa-copyright"></i> 2020 Pick-A-Book Pte. Ltd.</small>
+    		        </div>
+    		    </div>
+    		</div>
+    	</div>
+
+    </footer>
+
     
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
