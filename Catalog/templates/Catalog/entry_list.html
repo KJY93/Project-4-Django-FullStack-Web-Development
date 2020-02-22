@@ -1,0 +1,20 @@
+<!-- this file to load when there is no AJAX call -->
+
+{% extends 'base.template.html' %}
+
+{% load static %}
+
+{% block page_title %} Books Catalog {% endblock %}
+
+{% block content %}
+    <div class="endless_page_template">
+        {% include 'Catalog/books_list.template.html' %}
+    </div>
+    
+{% endblock %}
+    
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/el-pagination.js' %}"></script>
+    <script>$.endlessPaginate({pageSelector: 'div#bookFilteredResult'});</script>
+{% endblock %}
