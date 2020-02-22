@@ -1,36 +1,20 @@
 <ul class="navbar-nav">
     
 
-    
-    <li class="nav-item dropdown">
-        
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categories
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="{% url 'show_books' 'ShopAll' %}">Shop All</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Fantasy' %}">Fantasy</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Children' %}">Children</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Mystery' %}">Mystery</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Nonfiction' %}">Nonfiction</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Classics' %}">Classics</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Biographies & Memoirs' %}">Biographies & Memoirs</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Cookbooks' %}">Cookbooks</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Fiction' %}">Fiction</a>
-            <a class="dropdown-item" href="{% url 'show_books' 'Thriller' %}">Thriller</a>
-        </div>
-    </li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'show_books' %}">Explore More Books</a></li>   
+
 
 </ul>
 
 <ul class="navbar-nav ml-auto mt-2">
     {% if request.user.is_authenticated %}
 	    <li class="nav-item"><a class="nav-link" href="{% url 'view_profile' %}">Profile</a></li>
-	    {% if request.user.is_superuser %}
-		    <li class="nav-item">
-		        <a class="nav-link" href="/vieworder">View Order</a>
-		    </li>
-	    {% endif %}    	
+	    <!-- 170220 pending work -->
+	    <!--{% if request.user.is_superuser %}-->
+		   <!-- <li class="nav-item">-->
+		   <!--     <a class="nav-link" href="/vieworder">View Order</a>-->
+		   <!-- </li>-->
+	    <!--{% endif %}    	-->
     	<li class="nav-item"><a class="nav-link" href="/carts">View Cart(<span id="qtyInCart">{{ number_of_items }}</span>)</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
     {% else %}
