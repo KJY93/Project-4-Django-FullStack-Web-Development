@@ -1,0 +1,24 @@
+<!-- extends from base template -->
+{% extends 'base.template.html' %}
+
+<!-- include crispy tag -->
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+<!-- page title -->
+{% block page_title %} About Us {% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-3 mb-3">
+        <h4 id="aboutUsHeader"><strong>About Us</strong></h4>
+        
+        <p>
+            Pick-A-Book bookstore was founded by Mr Yamaichi and Mr Sam Lee on the 1st January 2020. 
+            The aim of Pick-A-Book bookstore is to make more varieties of books available to the locals and also in the same time to incalcate good reading habits among the population.
+            Pick-A-Book currently offers a vast genre of books ranging from Thriller, Children, Fiction, Nonfiction and Cookbooks, just to name few.
+            The bookstore is opened 7 days a week to satisfy the reading and book shopping needs for all of our customer.
+            So, what are still waiting for? Do browse through our exciting catalogues of books or drop by our bookstore yourself to pick up an exciting book of your choice today.
+        </p>
+    </div>
+{% endblock %}
