@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'absoluteuri',
     'Carts',
-    # 150220
-    'Order'
+    'Order',
+    'el_pagination'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -77,7 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'Carts.contexts.cart_contents'
+                'Carts.contexts.cart_contents',
+                'django.template.context_processors.request', ## For EL-pagination
             ],
         },
     },
