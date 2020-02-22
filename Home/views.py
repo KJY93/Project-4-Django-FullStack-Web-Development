@@ -1,9 +1,7 @@
 from django.shortcuts import render
-# from Catalog.models import Book, BookCover
 from Catalog.models import Book
 from Order.models import OrderItem
 import datetime
-# from datetime import date, timedelta
 
 import dateutil.relativedelta
 
@@ -52,3 +50,12 @@ def get_index(request):
         'best_deal_book':best_deal_book
     })
     
+    
+def our_service(request):
+    return render(request, 'Home/our-services.html')
+    
+def about_us(request):
+    return render(request, 'Home/about-us.html')
+    
+def contact_us(request):
+    return render(request, 'Home/contact-us.html')
