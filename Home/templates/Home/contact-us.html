@@ -1,0 +1,67 @@
+<!-- extends from base template -->
+{% extends 'base.template.html' %}
+
+<!-- include crispy tag -->
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+<!-- page title -->
+{% block page_title %} Contact Us {% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-5 mb-5">
+        
+            <div class="row justify-content-center">
+                <div class="col-sm-6">
+                    <div id="enquiryFormContainer">
+                        <h5><strong>ENQUIRY FORM</strong></h5>
+                        <p>We would like to hear from you. If you have any questions in mind, do reach out to us by
+                            filling out the form below and we will try to get back to you with your enquiries as fast as we can. 
+                            Do take note to fill out all the form fields as they are mandatory. 
+                        </p>
+                        
+                        <p class="mt-4">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="name" class="col-sm-3 col-form-label">Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="contact" class="col-sm-3 col-form-label">Contact No.</label>
+                                    <div class="col-sm-9">    
+                                        <input type="tel" class="form-control" id="contact" placeholder="65-1234-5678" pattern="[5-6]{2}-[0-9]{4}-[0-9]{4}" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="details" class="col-sm-3 col-form-label">Details </label>
+                                    <div class="col-sm-9">   
+                                        <textarea class="form-control" id="details" rows="5" placeholder="Your Message" required></textarea>
+                                    </div>
+                                </div>  
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-warning"><strong>SUBMIT</strong></button>
+                                    
+                                    <button type="button" class="btn btn-warning"><strong>RESET</strong></button>
+                                </div>
+                                
+                            </form>                                
+                        </p>
+                    </div>
+                </div>
+            </div>        
+            
+    </div>
+{% endblock %}
