@@ -1,0 +1,92 @@
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid mt-3">
+        
+        <div class="row">
+            <div class="col-sm-12 col-md-3 mt-3">
+                
+                <div>
+                    <div>
+                        <h6><strong>FILTER BY</strong></h6>
+                    </div>
+                
+                </div>    
+                    <div>
+                        <select id="genreFilter" multiple="multiple" title="Genre">
+                            {% for genre in genres %}
+                                {% if genre.category_description == category %}
+                                    <option value="{{ genre.category_description }}" selected>{{ genre.category_description }}</option>
+                                {% else %}
+                                    <option value="{{ genre.category_description }}">{{ genre.category_description }}</option>
+                                {% endif %}
+                            {% endfor %} 
+                        </select>
+
+
+                        <select class="mt-2" id="authorFilter" multiple="multiple" title="Author">
+                            {% for author in authors %}
+                                <option value="{{ author.name }}">{{ author.name }}</option>
+                            {% endfor %}  
+                        </select>
+                        
+                        <!-- 0902 price range slider -->
+                        <label class="mt-3">Price Range</label>
+                        <input type="text" id="price_range" name="price_range" value="" />
+
+                        <div class="mt-2">
+                            <button id="searchButton" type="submit" class="btn btn-secondary">Search</button>
+                            <button id="resetButton" type="button" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </div>
+ 
+            </div>
+            
+            <div class="col-sm-12 col-md-9">
+                <!-- by default if nothing is selected all the books result will be displayed -->
+                <!-- if filter is on, this corresponding div section will be updated with the filtered results -->
+                <div class="row" id="bookFilteredResult">
+                    <!-- all_books -->
+                    {% load el_pagination_tags %}
+                    
+                    {% paginate 8 entry_list %}
+                    {% for book in entry_list %}
+                        <div class="col-sm-12 col-md-3 mt-3">
+                            <a href='{% url "book_details" book_id=book.id %}'>
+                                <div class="card-deck">
+                                    <div class="card itemImg">
+                                        <img class="card-img-top" src="{{ book.image.cdn_url }}" alt="book image for {{ book.title }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ book.title }}</h5>
+                                            <p class="card-text">
+                                                <div class="author">
+                                                    by {{ book.author.all |join:", " }}
+                                                </div>
+                                                
+                                                <div class="price">
+                                                    ${{ book.price }}
+                                                </div>                
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %} 
+                    <div class="col-sm-12 col-md-12">
+                        <div class="pagination">{% show_pages %}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    
+    <script src="{% static 'js/filter-dropdown.js' %}"></script>
+    
+{% endblock %}
+
+
