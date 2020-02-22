@@ -1,0 +1,35 @@
+<!-- this will populate the particular targeted element with Django EL AJAX -->
+
+{% load el_pagination_tags %}
+
+{% paginate 8 entry_list %}
+
+{% for entry in entry_list %}
+    <div class="col-sm-12 col-md-3 mt-3">
+        <a href='{% url "book_details" book_id=entry.id %}'>
+            <div class="card-deck">
+                <div class="card itemImg">
+                    <img class="card-img-top" src="{{ entry.image.cdn_url }}" alt="book image for {{ entry.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ entry.title }}</h5>
+                        <p class="card-text">
+                            <div class="author">
+                                by {{ entry.author.all |join:", " }}
+                            </div>
+                            
+                            <div class="price">
+                                ${{ entry.price }}
+                            </div>                
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+   
+{% endfor %}
+
+<div class="col-sm-12 col-md-12">
+    <div class="pagination">{% show_pages %}</div>
+</div>
+
