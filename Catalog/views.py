@@ -8,68 +8,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import requests
 from django.conf import settings
 from django.template.loader import render_to_string
+from el_pagination.decorators import page_template
 
-def show_books(request, category="ShopAll"):
-    
+@page_template('Catalog/entry_list_page.html') 
+def show_books(request, template='Catalog/entry_list.html', extra_context=None):
     books = Book.objects.all().order_by('-publishing_year')
-    genres = Genre.objects.all()
-    author = Author.objects.all()
     
-    if category in ["Fantasy", "Children", "Mystery", "Nonfiction", "Classics", "Biographies & Memoirs", "Cookbooks", "Fiction", "Thriller"]:
-        
-        # get genre id
-        book_id = list(Genre.objects.filter(category_description=category).values())[0]['id']
-    
-        # filter book by that particular genre based in genre id above
-        books = Book.objects.filter(genre=book_id)
-                
-    book_list = books
-
-    # Show 8 books per page 
-    paginator = Paginator(book_list, 8)  
-
-    page = request.GET.get('page', 1)
-
-    try:
-        book_qs = paginator.page(page)
-    except PageNotAnInteger:
-        book_qs = paginator.page(1)
-    except EmptyPage:
-        book_qs = paginator.page(paginator.num_pages)
-
-    # in case of ajax call update show_books.template.html page
-    if request.is_ajax():
-        html = render_to_string('Catalog/filtered_books.template.html', {'book_qs': book_qs})
-        return HttpResponse(html)
-
-    return render(request, 'Catalog/show_books.template.html', {
-        'category':category,
-        'all_books':books,
-        'genres':genres,
-        'authors':author,
-        'book_qs': book_qs,
-    })
-
-def book_details(request, book_id):
-    book_detail = Book.objects.filter(id=int(book_id))
-
-    book_genre = list(book_detail.values('genre__category_description'))[0]['genre__category_description']
-
-    book_ISBN = list(book_detail.values('ISBN'))[0]['ISBN']
-
-    # get book ratings from GoodReads using GoodReads API
-    res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key":settings.GOODREADS_API_KEY, "isbns": book_ISBN})
-    average_ratings = res.json()["books"][0]["average_rating"]
-
-    return render(request, 'Catalog/show_book_details.template.html', {
-        'book_detail':book_detail,
-        'average_ratings':average_ratings,
-        'book_genre': book_genre
-    })
-    
-# filter book route
-def book_filter(request):
-    books = Book.objects.all().order_by('-publishing_year')
     genres = Genre.objects.all()
     author = Author.objects.all()
 
@@ -89,29 +33,33 @@ def book_filter(request):
         if ('to_price' in request.GET):
             if int(request.GET.get('to_price')) == 0:
                 books = Book.objects.all().order_by('-publishing_year')
-                
-    book_list = books
+    context = {
+        'entry_list': books,
+        'page_template': page_template,
+        'genres': genres,
+        'authors': author,
+    }
     
-    # Show 8 books per page 
-    paginator = Paginator(book_list, 8)  
+    if extra_context is not None:
+        context.update(extra_context)
+    return render(request, template, context)
 
-    page = request.GET.get('page', 1)
 
-    try:
-        book_qs = paginator.page(page)
-    except PageNotAnInteger:
-        book_qs = paginator.page(1)
-    except EmptyPage:
-        book_qs = paginator.page(paginator.num_pages)
 
-    # in case of ajax call update show_books.template.html page
-    if request.is_ajax():
-        html = render_to_string('Catalog/filtered_books.template.html', {'book_qs': book_qs})
-        return HttpResponse(html)
+def book_details(request, book_id):
+    book_detail = Book.objects.filter(id=int(book_id))
 
-    return render(request, 'Catalog/show_books.template.html', {
-        'all_books':books,
-        'genres':genres,
-        'authors':author,
-        'book_qs': book_qs,
+    book_genre = list(book_detail.values('genre__category_description'))[0]['genre__category_description']
+
+    book_ISBN = list(book_detail.values('ISBN'))[0]['ISBN']
+
+    # get book ratings from GoodReads using GoodReads API
+    res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key":settings.GOODREADS_API_KEY, "isbns": book_ISBN})
+    average_ratings = res.json()["books"][0]["average_rating"]
+
+    return render(request, 'Catalog/show_book_details.template.html', {
+        'book_detail':book_detail,
+        'average_ratings':average_ratings,
+        'book_genre': book_genre
     })
+    
