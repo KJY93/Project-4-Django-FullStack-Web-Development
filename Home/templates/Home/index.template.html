@@ -12,14 +12,18 @@
         <!-- Home Banner -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="jumbotron jumbotron-fluid" id="bannerBackground">
-                    <div class="container text-center">
-                        <h2>Pick a book and read to your heart's content today!</h2>
-                        
-                        <div class="mt-5 bannerContainer">
-                            <div>Free shipping for orders above $15</div>
+                <!-- 210220 remove container class -->
+                <div>
+                    <div class="jumbotron jumbotron" id="bannerBackground">
+                        <div class="text-center">
+                            <h2>Pick a book and read to your heart's content today!</h2>
+                            
+                            <div class="mt-5 bannerContainer">
+                                <div>Free shipping for orders above $100</div>
+                            </div>
+                            
+                            <a class="btn btn-outline-secondary mt-3" href="{% url 'show_books' %}" role="button">Shop Now</a>
                         </div>
-                        
                     </div>
                 </div>
             </div>
