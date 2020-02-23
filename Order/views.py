@@ -12,6 +12,9 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
+# 220220
+import datetime
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -85,15 +88,19 @@ def checkout(request):
                     object_record = Order.objects.filter(stripe_token=stripeToken)
                     order_id = list(object_record.values())[0]['id']
                     
-            
+                    # get datetime for order date and shipping date
+                    order_date = datetime.date.today()
+                    shipping_date = order_date + datetime.timedelta(days=3)
+                    
                     context = {
                         'user': request.user,
                         'order_total': total_amount,
                         'shopping_cart': cart,
                         'order_id': order_id,
-                        
-                        # 220220
                         'delivery_fee': delivery_fee,
+                        # 220220
+                        'order_date':order_date,
+                        'shipping_date':shipping_date,
                     }
                     
                     # create and send the email
