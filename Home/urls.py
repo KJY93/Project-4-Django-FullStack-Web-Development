@@ -1,5 +1,4 @@
 from django.urls import path
-# 220220 include our service
 from Home.views import get_index, our_service, about_us, contact_us
 
 urlpatterns = [

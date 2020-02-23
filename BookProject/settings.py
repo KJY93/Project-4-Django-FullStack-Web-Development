@@ -28,7 +28,8 @@ SECRET_KEY = 'ewxt**y_xjmedo&-zx7ngcyxyo)71wkq132rlison7+=wwt=r#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# 230220 include heroku domain
+ALLOWED_HOSTS = ['kjy-pick-a-book.herokuapp.com', '*']
 
 
 # Application definition
@@ -62,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 230220 include whitenoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'BookProject.urls'
@@ -152,6 +155,11 @@ MESSAGE_TAGS = {
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+
+# 230220
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 AUTH_USER_MODEL = 'Accounts.NewUser' 
 

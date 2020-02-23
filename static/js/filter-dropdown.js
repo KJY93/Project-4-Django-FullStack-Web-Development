@@ -48,12 +48,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // get min and max price selected
         var from_price = slider.result.from;
         var to_price = slider.result.to;
-
+        
         let genre_selected = $('#genreFilter').val();
         let author_selected = $('#authorFilter').val();
-
+        
         $.ajax({
-            url: "/catalog",
+            url: "./",
             type:'GET',
             data: {
                 'from_price': from_price,
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             },
             dataType: 'html',
             success: function (response) {
-                console.log(response)
+                console.log(response);
                 $('#bookFilteredResult').html(response);
             }
         });
