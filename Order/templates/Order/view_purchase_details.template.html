@@ -1,0 +1,68 @@
+<!-- extends from base template -->
+{% extends 'base.template.html' %}
+
+{% load static %}
+
+<!-- page title -->
+{% block page_title %} View Purchase Details {% endblock %}
+
+{% block content %}
+    
+    <div class="mt-3 mb-3">
+        <h3><strong>Order Details</strong></h3>
+        
+        <hr>
+        
+        <div>
+            <div>
+                <p><strong>Order Date:</strong> {{ order.date }}</p>
+                <p><strong>Order Number:</strong> {{ order.order.id }}</p>
+                <p><strong>Delivery Method:</strong> SG Standard (2-4 working days)</p>
+            </div>
+            
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item_ordered in order_items %}
+                            <tr>
+                                <td>
+                                    <div><img class="bookImg" src="{{ item_ordered.image.cdn_url }}" alt=""/></div>
+                                    <div><strong>{{ item_ordered.item.product.title }}</strong></div>
+                                </td>
+                                <td>{{ item_ordered.item.quantity }}</td>
+                                <td>${{ item_ordered.item.price }}</td>
+                            </tr>
+                        {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td>Item Total</td>
+                                <td>${{ order.total }}</td>
+                            </tr>                
+        
+                            <tr>
+                                <td></td>
+                                <td>Delivery Fees</td>
+                                <td>${{ order.delivery_cost }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td></td>
+                                <td>Order Total</td>
+                                <td>${{ order.subtotal }}</td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+    
+    <a href="{% url 'view_purchase_list' %}"><strong><i class="fas fa-arrow-circle-left"></i><span id="backToOrderSummary">Order Summary List</span></strong></a>
+{% endblock %}
