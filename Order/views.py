@@ -21,6 +21,8 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required
 def checkout(request):
     cart = list((request.session.get('shopping_cart', {})).values())
+    
+    print(cart)
 
     # get the total amount of the orders
     total_amount = 0
@@ -70,7 +72,9 @@ def checkout(request):
                     # create order item for each items in that particular order
                     for item in cart:
                         product = get_object_or_404(Book, pk=int(item['id']))
-                        price = item['total_price']
+                        
+                        # price to be saved as base unit price
+                        price = item['price']
                         quantity = item['quantity_ordered']
                         
                         OrderItem.objects.create(order=order, price=price, quantity=quantity, product=product) 
@@ -177,7 +181,9 @@ def checkout(request):
             'order_form': order_form,
             'amount': total_amount           
         })
-    
+   
+# 220220 added login required
+@login_required
 def confirm_checkout(request):
     # retrieve shopping cart info
     cart = request.session.get('shopping_cart', {})
@@ -209,3 +215,39 @@ def confirm_checkout(request):
         'delivery_fee': delivery_fee,
         'subtotal': subtotal,
     })
+    
+    
+# added in login required 220220 
+@login_required
+def view_purchase_list(request):
+
+    user_purchase = Order.objects.filter(customer__exact=request.user)
+    
+    user_purchase = [
+        dict(order=order, total=order.subtotal_cost(),
+        items=sum([item.quantity for item in order.items.all()]), date=order.created.strftime('%d %b %y'))
+        for order in user_purchase        
+    ]
+    
+    return render(request, 'Order/view_purchase_list.template.html', {
+        'purchase_order': user_purchase
+    })
+    
+@login_required
+def view_purchase_details(request, order_purchase_id):
+    
+    order = get_object_or_404(Order, id=order_purchase_id)
+    
+    order_data = dict(order=order, subtotal=order.subtotal_cost(), total=order.total_cost(),
+    delivery_cost=order.delivery_cost(), date=order.created.strftime('%d %b %Y'))     
+    
+    order_items = [dict(item=item, image=item.product.image) for item in order.items.all()]
+    
+    return render(request, 'Order/view_purchase_details.template.html', {
+        'order': order_data,
+        'order_items': order_items,
+    })
+    
+    
+
+    
