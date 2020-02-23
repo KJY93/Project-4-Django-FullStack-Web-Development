@@ -9,12 +9,11 @@
 <ul class="navbar-nav ml-auto mt-2">
     {% if request.user.is_authenticated %}
 	    <li class="nav-item"><a class="nav-link" href="{% url 'view_profile' %}">Profile</a></li>
-	    <!-- 170220 pending work -->
-	    <!--{% if request.user.is_superuser %}-->
-		   <!-- <li class="nav-item">-->
-		   <!--     <a class="nav-link" href="/vieworder">View Order</a>-->
-		   <!-- </li>-->
-	    <!--{% endif %}    	-->
+
+	    <li class="nav-item">
+	        <a class="nav-link" href="{% url 'view_purchase_list' %}">View Purchase</a>
+	    </li>
+
     	<li class="nav-item"><a class="nav-link" href="/carts">View Cart(<span id="qtyInCart">{{ number_of_items }}</span>)</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
     {% else %}
