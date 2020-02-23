@@ -73,7 +73,10 @@
     		</div>	
     		
       		<div>
-      			<a class="btn btn-primary" href="{% url 'checkout' %}" role="button">Place Order $<span id="total_payable_amount">{{ total_amount }}</span></a>			 
+      			<!--<a class="btn btn-warning" href="{% url 'checkout' %}" role="button">Place Order $<span id="total_payable_amount">{{ total_amount }}</span></a>			 -->
+      			
+      			<!-- 220220 -->
+      			<a class="btn btn-primary" href="{% url 'confirm_checkout' %}" role="button">Proceed to Checkout</a>	
             </div>
     	</div>		
     {% endif %}	    
