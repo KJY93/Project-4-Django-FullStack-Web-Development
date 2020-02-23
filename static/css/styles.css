@@ -1,5 +1,3 @@
-/* 220220 */
-
 * {
     margin: 0;
     padding: 0;
@@ -33,7 +31,7 @@ body {
     
 }
 
-.customerServicesHeader, #aboutUsHeader {
+.customerServicesHeader, #aboutUsHeader, #ourStore {
     color: #ff8000;
 }
 
@@ -156,6 +154,10 @@ ul {
     width: 10vw;
 }
 
+.bookImg {
+   width: 9vw; 
+}
+
 .deleteButton {
     width: 45px;
 } 
@@ -175,14 +177,13 @@ ul {
     border-color: #117a8b;
 }
 
-/* 220220 */
+
 #enquiryFormContainer {
     padding: 15px;
     border-style: solid;
     border-color: #dcdcdc;
 }
 
-/* 220220 */
 #bookSliderContainer {
     padding-left: 25px;
     padding-right: 25px;
@@ -195,6 +196,12 @@ ul {
 	width: 30px;
 	background: rgb(255, 0, 0);
 	z-index: 1;
+}
+
+
+/* 230220 */
+#backToOrderSummary {
+    padding-left: 5px;
 }
 
 @media (max-width: 575.98px) { 
