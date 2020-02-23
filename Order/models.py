@@ -3,6 +3,9 @@ from Accounts.models import NewUser
 
 from Catalog.models import Book
 
+# 230220
+from decimal import Decimal
+
 class Charge(models.Model):
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
@@ -30,8 +33,21 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
+    def total_cost(self):
+        return '{0:.2f}'.format(sum(item.get_cost() for item in self.items.all()))
+        
+    def delivery_cost(self):
+        if Decimal(self.total_cost()) > Decimal(100.00):
+            return '{0:.2f}'.format(0)
+        else:
+            return '{0:.2f}'.format(3.95)  
+            
+    def subtotal_cost(self):
+        return '{0:.2f}'.format(Decimal(self.total_cost()) + Decimal(self.delivery_cost()))
+
     def __str__(self):
         return f"{self.customer}"
+        
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
