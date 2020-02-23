@@ -182,7 +182,11 @@ ul {
     border-color: #dcdcdc;
 }
 
-
+/* 220220 */
+#bookSliderContainer {
+    padding-left: 25px;
+    padding-right: 25px;
+}
 
 /* 210220 separator footer */
 .separator {
