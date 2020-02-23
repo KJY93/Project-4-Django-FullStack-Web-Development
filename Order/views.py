@@ -15,7 +15,6 @@ from django.utils.html import strip_tags
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-# 160220
 @login_required
 def checkout(request):
     cart = list((request.session.get('shopping_cart', {})).values())
@@ -29,6 +28,16 @@ def checkout(request):
     
     # round up total amount to 2 decimal points
     total_amount = round(total_amount, 2)
+    
+    # check if delivery fees is needed
+    if total_amount < 100.00:
+        delivery_fee = 3.95
+    else:
+        delivery_fee = 0.00
+        
+    # total
+    total_amount = round((total_amount + delivery_fee), 2)
+
 
     if request.method == "POST":
         
@@ -81,7 +90,10 @@ def checkout(request):
                         'user': request.user,
                         'order_total': total_amount,
                         'shopping_cart': cart,
-                        'order_id': order_id
+                        'order_id': order_id,
+                        
+                        # 220220
+                        'delivery_fee': delivery_fee,
                     }
                     
                     # create and send the email
@@ -159,5 +171,34 @@ def checkout(request):
             'amount': total_amount           
         })
     
+def confirm_checkout(request):
+    # retrieve shopping cart info
+    cart = request.session.get('shopping_cart', {})
     
-
+    shopping_cart_list = list(cart.values())
+    
+    # total amount payable 
+    total_amount = 0
+    
+    for elem in shopping_cart_list:
+        total_amount = total_amount + float(elem['total_price'])
+        total_amount = total_amount
+    
+    # round up total amount to 2 decimal points
+    total_amount = round(total_amount, 2)
+    
+    # check if delivery fees is needed
+    if total_amount < 100.00:
+        delivery_fee = 3.95
+    else:
+        delivery_fee = 0.00
+        
+    # subtotal
+    subtotal = round((total_amount + delivery_fee), 2)
+    
+    return render(request, 'Order/confirm_checkout.template.html', {
+        'shopping_cart':cart,
+        'amount': total_amount,
+        'delivery_fee': delivery_fee,
+        'subtotal': subtotal,
+    })
