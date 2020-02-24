@@ -19,7 +19,7 @@
                         <th>Items</th>
                         <th>Total</th>
                         <th>Status</th>
-                        <th>View</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,58 @@
                             <td>{{ order.items }}</td>
                             <td>${{ order.total }}</td>
                             <td>{{ order.order.status }}</td>
-                            <td><a href="{% url 'view_purchase_details' order.order.id %}"><i class="fas fa-search"></i></a></td>
+                            <td>
+                                <a class="btn btn-info" href="{% url 'view_purchase_details' order.order.id %}"><i class="fas fa-search"></i></a>
+                               
+                                <!-- allow admin to update customer order status -->
+                                {% if request.user.is_superuser %}
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateOrder{{ order.order.id }}">
+                                    <i class="far fa-edit"></i>
+                                </button>         
+
+                                <!--Modal -->
+                                <div class="modal fade" id="updateOrder{{ order.order.id }}" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Update Order</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="country-search form-inline my-2 my-lg-0" method="post" action="{% url 'update_order' order.order.id %}">
+                                                    {% csrf_token %}
+                                                    
+                                                    <select class="form-control" name="updateStatus" required>
+                                                        {% for stat in order_status_list %}
+                                                            {% if order.order.status == stat %}
+                                                                <option value="{{ stat }}" selected>{{ stat }}</option>
+                                                            {% else %}
+                                                                <option value="{{ stat }}">{{ stat }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+               
+                                                    <button class="btn btn-warning ml-2 my-2 my-sm-0" type="submit">Submit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+
+                                {% endif %}
+                            </td>
+                            
+                            
+  
+                            
+                            
+
+                           
+                           
+                           
+                            
                         </tr>
                     {% endfor %}
                 </tbody>
