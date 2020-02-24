@@ -32,7 +32,13 @@ class Order(models.Model):
     status = models.CharField(choices=STATUS_CHOICES, default='Processing', max_length=20)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    street_address = models.CharField(max_length=255)
+    town_or_city = models.CharField(max_length=50)
+    county = models.CharField(max_length=50)
+    postcode = models.CharField(max_length=10)
+    country = models.CharField(max_length=50)  
     
+    # 230220
     def total_cost(self):
         return '{0:.2f}'.format(sum(item.get_cost() for item in self.items.all()))
         
@@ -46,7 +52,8 @@ class Order(models.Model):
         return '{0:.2f}'.format(Decimal(self.total_cost()) + Decimal(self.delivery_cost()))
 
     def __str__(self):
-        return f"{self.customer}"
+        # 240220 added in stripe token and status
+        return f"{self.customer} - {self.stripe_token} - {self.status}"
         
 
 class OrderItem(models.Model):

@@ -21,8 +21,6 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required
 def checkout(request):
     cart = list((request.session.get('shopping_cart', {})).values())
-    
-    print(cart)
 
     # get the total amount of the orders
     total_amount = 0
@@ -46,6 +44,11 @@ def checkout(request):
 
     if request.method == "POST":
         
+        street_address = f"{request.POST['street_address1']} {request.POST['street_address2']}"
+        town_or_city = request.POST['town_or_city']
+        county = request.POST['county']
+        postcode = request.POST['postcode']
+        country = request.POST['country']
         order_form = OrderForm(request.POST)
         payment_form = PaymentForm(request.POST)
 
@@ -64,9 +67,16 @@ def checkout(request):
                     messages.success(request, "Payment successfully made. We will begin to process your order!")
                     
                     # create order if the charge was successful
+                    
+                    # 240220 added in address
                     order = Order.objects.create(
                         customer=request.user,
-                        stripe_token=stripeToken
+                        stripe_token=stripeToken,
+                        street_address=street_address,
+                        town_or_city=town_or_city,
+                        county=county,
+                        postcode=postcode,
+                        country=country
                     )
                     
                     # create order item for each items in that particular order
