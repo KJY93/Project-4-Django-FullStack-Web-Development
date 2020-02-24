@@ -233,6 +233,15 @@ def view_purchase_list(request):
 
     user_purchase = Order.objects.filter(customer__exact=request.user)
     
+    
+    # 240220
+    order_status = dict(Order.STATUS_CHOICES)
+    
+    order_status_list = []
+    
+    for key in order_status:
+        order_status_list.append(order_status[key])
+    
     user_purchase = [
         dict(order=order, total=order.subtotal_cost(),
         items=sum([item.quantity for item in order.items.all()]), date=order.created.strftime('%d %b %y'))
@@ -240,7 +249,11 @@ def view_purchase_list(request):
     ]
     
     return render(request, 'Order/view_purchase_list.template.html', {
-        'purchase_order': user_purchase
+        'purchase_order': user_purchase,
+
+        # 240220
+        'order_status_list': order_status_list
+
     })
     
 @login_required
@@ -258,6 +271,15 @@ def view_purchase_details(request, order_purchase_id):
         'order_items': order_items,
     })
     
+@login_required
+def update_order(request, order_id):
     
+    order = get_object_or_404(Order, id=order_id)
+    order.status = request.POST.get('updateStatus')    
+    order.save()
+    
+    return redirect(reverse('view_purchase_list'))
+
+
 
     
