@@ -228,6 +228,9 @@ ul {
         width: 100%;
         height: 370px;
         margin-top: -370px;
-        
-}
+    }
+    
+    .bookImg {
+        width: 27vw;
+    }
 }
