@@ -13,22 +13,24 @@
                 
                 </div>    
                     <div>
-                        <select id="genreFilter" multiple="multiple" title="Genre">
-                            {% for genre in genres %}
-                                {% if genre.category_description == category %}
-                                    <option value="{{ genre.category_description }}" selected>{{ genre.category_description }}</option>
-                                {% else %}
-                                    <option value="{{ genre.category_description }}">{{ genre.category_description }}</option>
-                                {% endif %}
-                            {% endfor %} 
-                        </select>
-
-
-                        <select class="mt-2" id="authorFilter" multiple="multiple" title="Author">
-                            {% for author in authors %}
-                                <option value="{{ author.name }}">{{ author.name }}</option>
-                            {% endfor %}  
-                        </select>
+                        <div>
+                            <select id="genreFilter" multiple="multiple" title="Genre">
+                                {% for genre in genres %}
+                                    {% if genre.category_description == category %}
+                                        <option value="{{ genre.category_description }}" selected>{{ genre.category_description }}</option>
+                                    {% else %}
+                                        <option value="{{ genre.category_description }}">{{ genre.category_description }}</option>
+                                    {% endif %}
+                                {% endfor %} 
+                            </select>
+    
+    
+                            <select class="mt-2" id="authorFilter" multiple="multiple" title="Author">
+                                {% for author in authors %}
+                                    <option value="{{ author.name }}">{{ author.name }}</option>
+                                {% endfor %}  
+                            </select>
+                        </div>
                         
                         <!-- 0902 price range slider -->
                         <label class="mt-3">Price Range</label>
