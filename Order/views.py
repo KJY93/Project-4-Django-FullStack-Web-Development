@@ -230,11 +230,13 @@ def confirm_checkout(request):
 # added in login required 220220 
 @login_required
 def view_purchase_list(request):
-
-    user_purchase = Order.objects.filter(customer__exact=request.user)
+    
+    if request.user.is_superuser:
+        user_purchase = Order.objects.all()
+    else:
+        user_purchase = Order.objects.filter(customer__exact=request.user)
     
     
-    # 240220
     order_status = dict(Order.STATUS_CHOICES)
     
     order_status_list = []
