@@ -16,6 +16,9 @@
                     <tr>
                         <th>Order Number</th>
                         <th>Order Date</th>
+                        {% if request.user.is_superuser %}    
+                            <th>Customer</th>
+                        {% endif %}
                         <th>Items</th>
                         <th>Total</th>
                         <th>Status</th>
@@ -27,6 +30,9 @@
                         <tr>
                             <td>{{ order.order.id }}</td>
                             <td>{{ order.date }}</td>
+                            {% if request.user.is_superuser %} 
+                                <td>{{ order.order.customer }}</td>
+                            {% endif %}
                             <td>{{ order.items }}</td>
                             <td>${{ order.total }}</td>
                             <td>{{ order.order.status }}</td>
