@@ -11,23 +11,29 @@
 
 {% block content %}
 
-<div class="d-flex justify-content-center mt-5 mb-5">
-    <form method="POST" action="{% url 'register' %}" class="border border-info p-5">
-
-        {% csrf_token %}
-
-        <p class="h4 mb-4 signup-header">SIGN UP</p>
-		{{ form|crispy }}
-
-      	<div class="text-center">
-        	<button class="btn btn-primary" type="submit">Sign Up</button>
+    <div class="container-fluid">
+        <div class="row" id="registrationContainer">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="mt-5 mb-5">
+                    <form method="POST" action="{% url 'register' %}" class="border border-info p-5 form-group">
+                
+                        {% csrf_token %}
+                
+                        <p class="h4 mb-4 signup-header">SIGN UP</p>
+                
+                        {{ form|crispy }}
+                
+                      	<div class="text-center">
+                        	<button class="btn btn-primary" type="submit">Sign Up</button>
+                        </div>
+                
+                		<div class="text-center loginButton">
+                		    If you already have an account <a href="{% url 'login' %}"><strong>login</strong></a> instead.
+                		</div>
+                    </form>
+                </div> 
+            </div>
         </div>
+    </div>
 
-		<div class="text-center loginButton">
-		    If you already have an account <a href="{% url 'login' %}"><strong>login</strong></a> instead.
-		</div>
-    </form>
-    
-
-</div> 
 {% endblock %}
