@@ -320,8 +320,11 @@ PostgreSQL will be used as the database to store all the datatables and datasets
 9. GoodReads:
    The book's rating and book's description were obtained from GoodReads website - https://www.goodreads.com/
 
-8. Password reset:
+10. Password reset:
    The password reset for this web application is accomplished by following [Vitor Freitas](https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html) create a password reset view tutorial.
+
+11. Litmus:
+    The order confirmation email template were adapted from https://litmus.com/
 
 ## Special Thanks
 A huge thank you to our instructor, Mr Paul Chor Kun Xin for providing his guidance and invaluable feedbacks that has helped me to accomplish this final project.
