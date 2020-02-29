@@ -19,37 +19,37 @@ This project focuses on the development of a web application that allows user to
 ## Project Strategy and Scope
 ### User Stories
 1. User would like to browse through bestsellers, new & trending as well as books that are under $5.00
-- Feature to implement: To include a carousel slider to display the bestsellers, new & trending as well as books that are under $5.00 to the user.
+    - Feature to implement: To include a carousel slider to display the bestsellers, new & trending as well as books that are under $5.00 to the user.
 
 2. User would like to view through the details of a particular book
-- Feature to implement: To include a book details page that display book information that includes the book's title, the book's author, the book's cover, the book's base price, the book's available quantity, the book's ratings, the book's edition overview as well as the book's description to the user.
+    - Feature to implement: To include a book details page that display book information that includes the book's title, the book's author, the book's cover, the book's base price, the book's available quantity, the book's ratings, the book's edition overview as well as the book's description to the user.
 
 3. User would like to add a particular book to their shopping cart
-- Feature to implement: To include an add to cart button that allows user to click on to add book of their choices to the cart once they have selected the quantity of that book they would like to purchase.
+    - Feature to implement: To include an add to cart button that allows user to click on to add book of their choices to the cart once they have selected the quantity of that book they would like to purchase.
 
 4. User would like to view items in their shopping cart
-- Feature to implement: To include a view shopping cart page that allows user to browse through the items that are currently in their shopping cart. 
+    - Feature to implement: To include a view shopping cart page that allows user to browse through the items that are currently in their shopping cart. 
 
 5. User would like to update items in their shopping cart
-- Feature to implement: To make use of jQuery to allow user to update the shopping cart items.
+    - Feature to implement: To make use of jQuery to allow user to update the shopping cart items.
 
 1. User would like to delete a particular item in the shopping cart
-- Feature to implement: To include a X button in the view shopping cart page that allows user to click on in order for them to delete the items of their choices.
+    - Feature to implement: To include a X button in the view shopping cart page that allows user to click on in order for them to delete the items of their choices.
 
 7. User would like to have a summary shown to them before proceed to the actual payment page
-- Feature to implement: To include a summary table in the confirm checkout page to show the items ordered by the user together with the subtotal that they would have to pay for.
+    - Feature to implement: To include a summary table in the confirm checkout page to show the items ordered by the user together with the subtotal that they would have to pay for.
 
 8. User would like to make payment for their orders
-- Feature to implement: To include a checkout page that prompt the user for their personal details as well as their credit card details before they could proceed to make any payment.
+    - Feature to implement: To include a checkout page that prompt the user for their personal details as well as their credit card details before they could proceed to make any payment.
 
 9. User would like to view through their purchase history
-- Feature to implement: To include a view purchase page to show the user the history and status of their order.
+    - Feature to implement: To include a view purchase page to show the user the history and status of their order.
 
 10. User would like to update their user profile 
-- Feature to implement: To include a user update profile page that allows user to update their name, email address, firstname as well as their lastname.
+    - Feature to implement: To include a user update profile page that allows user to update their name, email address, firstname as well as their lastname.
 
 11.  Superuser would like to view through and update the orders status on purchases made by their customers
-- Feature to implement: To include feature that allows only superuser to view customer's order and also to change a particular order status, i.e. from processing to either dispatched or delivered.
+    - Feature to implement: To include feature that allows only superuser to view customer's order and also to change a particular order status, i.e. from processing to either dispatched or delivered.
 
 ## Project Structure    
 ### a. Overview
