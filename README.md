@@ -93,7 +93,7 @@ https://drive.google.com/file/d/1r3PcmpphwMDEQxn6VMfh8b1Sz8pESkH6/view?usp=shari
 11. Users are able to view and update their user profile.
 12. Users are able to browse through their order history and also to check the status of each orders that has been made.
 13. Superuser are able to view orders made by customer and also to change the order status of a particular order, i.e. from processing to either dispatched or delivered.
-14. User will receive an order confirmation email if their payment is sucessful.
+14. User will receive an order confirmation email if their payment is sucessful. **Do take note that you will only receive the order notification email if you have signed up with a valid email address during the account registration process.**
 
 ### b. Features to be implemented in the future
 For the future development of this bookstore web application, I would like to include the following features:
@@ -317,7 +317,13 @@ PostgreSQL will be used as the database to store all the datatables and datasets
 7. Icons8:
    Logo from favicon is used as the logo for the tab browser of this web application - https://icons8.com/
 
+9. GoodReads:
+   The book's rating and book's description were obtained from GoodReads website - https://www.goodreads.com/
+
 8. Password reset:
    The password reset for this web application is accomplished by following [Vitor Freitas](https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html) create a password reset view tutorial.
+
+## Special Thanks
+A huge thank you to our instructor, Mr Paul Chor Kun Xin for providing his guidance and invaluable feedbacks that has helped me to accomplish this final project.
 
 Note: This is for educational purpose only and not for commercial use.
