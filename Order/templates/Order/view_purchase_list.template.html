@@ -59,7 +59,7 @@
                                                 <form class="country-search form-inline my-2 my-lg-0" method="post" action="{% url 'update_order' order.order.id %}">
                                                     {% csrf_token %}
                                                     
-                                                    <select class="form-control" name="updateStatus" required>
+                                                    <select class="form-control" name="updateStatus">
                                                         {% for stat in order_status_list %}
                                                             {% if order.order.status == stat %}
                                                                 <option value="{{ stat }}" selected>{{ stat }}</option>
