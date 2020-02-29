@@ -97,6 +97,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     // 0902 for bootstrap spinner
     $("#quantity").inputSpinner();
+    
+    
+    // newsletter subscription AJAX
+    $("#subscription").click(function() {
+       let sub_email = $("#sub_email").val(); 
+       
+        $.ajax({
+            url: "/subscription/",
+            type:'GET',
+            data: {
+                'sub_email': sub_email
+            },
+            dataType: 'html',
+            success: function (response) {
+                subscribed = JSON.parse(response);
+                if (subscribed[0] === 'True') {
+                    alert('You have successfully subscribed to our newsletter. Check your email for confirmation.');
+                }
+            }
+        });
+    });
 
 });
 
