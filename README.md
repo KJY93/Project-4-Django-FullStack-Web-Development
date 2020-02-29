@@ -80,20 +80,20 @@ https://drive.google.com/file/d/1r3PcmpphwMDEQxn6VMfh8b1Sz8pESkH6/view?usp=shari
 
 ## Project Skeleton
 ### a. Existing Features
-    i. The web application was designed with Bootstrap grid design and mobile responsiveness in mind.<br>  
-    ii. New users are able to sign up for a new account.<br>  
-    iii. Users are able to login and logout of the web application.<br>  
-    iv. Users are able to browse through bestsellers, new & trending as well as books under $5.00 that are displayed on the carousel slider. Upon clicking on any of the books,users will be redirected to the show book details page whereby they will be able to check out information related to that particular book and also to add that particular book to their shopping cart.<br>  
-    v. User are able to use the filter by genre, author or price range option to retrieve book information via AJAX. Results returned will be displayed via Django Endless Digg style pagination.<br>  
-    vi. User are able to view their shopping cart items.<br>  
-    vii. User are able to update the quantity of books to be ordered in the shopping cart page via jQuery event handler.<br>  
-    viii. User are able to delete a particular item from their shopping cart.<br>  
-    viiii. User are able to view the order summary of their order at the confirm checkout page.<br>  
-    x. User are able to make payment at the check out page.<br>  
-    xi. Users are able to view and update their user profile.<br>  
-    xii. Users are able to browse through their order history and also to check the status of each orders that has been made.<br>  
-    xiii. Superuser are able to view orders made by customer and also to change the order status of a particular order, i.e. from processing to either dispatched or delivered.<br>  
-    xiiii. User will receive an order confirmation email if their payment is sucessful.<br>  
+1. The web application was designed with Bootstrap grid design and mobile responsiveness in mind.
+2. New users are able to sign up for a new account.
+3. Users are able to login and logout of the web application.
+4. Users are able to browse through bestsellers, new & trending as well as books under $5.00 that are displayed on the carousel slider. Upon clicking on any of the books,users will be redirected to the show book details page whereby they will be able to check out information related to that particular book and also to add that particular book to their shopping cart.
+5. User are able to use the filter by genre, author or price range option to retrieve book information via AJAX. Results returned will be displayed via Django Endless Digg style pagination. 
+6. User are able to view their shopping cart items.
+7. User are able to update the quantity of books to be ordered in the shopping cart page via jQuery event handler.
+8. User are able to delete a particular item from their shopping cart.
+9. User are able to view the order summary of their order at the confirm checkout page.
+10. User are able to make payment at the check out page.
+11. Users are able to view and update their user profile.
+12. Users are able to browse through their order history and also to check the status of each orders that has been made.
+13. Superuser are able to view orders made by customer and also to change the order status of a particular order, i.e. from processing to either dispatched or delivered.
+14. User will receive an order confirmation email if their payment is sucessful.
 
 ### b. Features to be implemented in the future
 For the future development of this bookstore web application, I would like to include the following features:
