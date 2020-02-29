@@ -33,7 +33,7 @@ This project focuses on the development of a web application that allows user to
 5. User would like to update items in their shopping cart
     - Feature to implement: To make use of jQuery to allow user to update the shopping cart items.
 
-1. User would like to delete a particular item in the shopping cart
+6. User would like to delete a particular item in the shopping cart
     - Feature to implement: To include a X button in the view shopping cart page that allows user to click on in order for them to delete the items of their choices.
 
 7. User would like to have a summary shown to them before proceed to the actual payment page
@@ -48,7 +48,7 @@ This project focuses on the development of a web application that allows user to
 10. User would like to update their user profile 
     - Feature to implement: To include a user update profile page that allows user to update their name, email address, firstname as well as their lastname.
 
-11.  Superuser would like to view through and update the orders status on purchases made by their customers
+11. Superuser would like to view through and update the orders status on purchases made by their customers
     - Feature to implement: To include feature that allows only superuser to view customer's order and also to change a particular order status, i.e. from processing to either dispatched or delivered.
 
 ## Project Structure    
@@ -80,20 +80,20 @@ https://drive.google.com/file/d/1r3PcmpphwMDEQxn6VMfh8b1Sz8pESkH6/view?usp=shari
 
 ## Project Skeleton
 ### a. Existing Features
-a. The web application was designed with Bootstrap grid design and mobile responsiveness in mind. 
-b. New users are able to sign up for a new account.
-c. Users are able to login and logout of the web application.
-d. Users are able to browse through bestsellers, new & trending as well as books under $5.00 that are displayed on the carousel slider. Upon clicking on any of the books,users will be redirected to the show book details page whereby they will be able to check out information related to that particular book and also to add that particular book to their shopping cart.
-e. User are able to use the filter by genre, author or price range option to retrieve book information via AJAX. Results returned will be displayed via Django Endless Digg style pagination.
-f. User are able to view their shopping cart items. 
-g. User are able to update the quantity of books to be ordered in the shopping cart page via jQuery event handler.
-h. User are able to delete a particular item from their shopping cart.
-i. User are able to view the order summary of their order at the confirm checkout page.
-j. User are able to make payment at the check out page.
-k. Users are able to view and update their user profile. 
-l. Users are able to browse through their order history and also to check the status of each orders that has been made.
-m. Superuser are able to view orders made by customer and also to change the order status of a particular order, i.e. from processing to either dispatched or delivered.
-n. User will receive an order confirmation email if their payment is sucessful.
+a. The web application was designed with Bootstrap grid design and mobile responsiveness in mind.<br>  
+b. New users are able to sign up for a new account.<br>  
+c. Users are able to login and logout of the web application.<br>  
+d. Users are able to browse through bestsellers, new & trending as well as books under $5.00 that are displayed on the carousel slider. Upon clicking on any of the books,users will be redirected to the show book details page whereby they will be able to check out information related to that particular book and also to add that particular book to their shopping cart.<br>  
+e. User are able to use the filter by genre, author or price range option to retrieve book information via AJAX. Results returned will be displayed via Django Endless Digg style pagination.<br>  
+f. User are able to view their shopping cart items.<br> 
+g. User are able to update the quantity of books to be ordered in the shopping cart page via jQuery event handler.<br>  
+h. User are able to delete a particular item from their shopping cart.<br> 
+i. User are able to view the order summary of their order at the confirm checkout page.<br>  
+j. User are able to make payment at the check out page.<br>  
+k. Users are able to view and update their user profile.<br>  
+l. Users are able to browse through their order history and also to check the status of each orders that has been made.<br>  
+m. Superuser are able to view orders made by customer and also to change the order status of a particular order, i.e. from processing to either dispatched or delivered.<br>  
+n. User will receive an order confirmation email if their payment is sucessful.<br>  
 
 ### b. Features to be implemented in the future
 a. For the future development of this bookstore web application, I would like to include the following features:
@@ -162,7 +162,7 @@ The web application was tested and is compatible on Chrome, Opera and Firefox.
 |22              | Clicking on the profile tab will redirect the user to a page whereby they will be able to update their personal details. | Pass     |
 
 ## Apps and Files Description
-The main apps and files used in this web application are briefly described as below:
+The main apps and files used in this web application are briefly described as below:<br>
 a. Apps
     i. BookProject - This is the main project folder. The important files in this folder is the settings.py file and the urls.py file. Settings.py files typically contains all the configured settings that is required to run the application. Urls.py file is the file that points to the different apps depending on the url that the user visited.
     ii. Acounts - This is the app that handles the process of user registration, profile updating as well as user logging in and out of the web application. The important files in this folder are the models.py file, admin.py file, forms.py file, urls.py file, views.py file and also the html templates files. In the models.py file, a NewUser class was created by inheriting from the AbstractUser class. In forms.py file, three forms were created, namely the UserLoginForm, UserRegistrationForm and also the UserUpdateForm. The UserRegistrationForm and the UserUpdateForm both inherits from the NewUser class created in models.py file. The views.py file contains the route to handle user registration, user logging in/out and also the updating of user profile. Urls.py file contains the urls to link to the different route in views.py that is responsible to be executed depending on the url the user has visited. In admin.py file, newly created models that was created in models.py file were registered so that it can be viewed in the Django admin UI. The templates folder in this app contains the login, register and user profile update html template files.
