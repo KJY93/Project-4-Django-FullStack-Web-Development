@@ -5,6 +5,17 @@ import datetime
 
 import dateutil.relativedelta
 
+
+# 290220
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.utils.html import strip_tags
+from django.contrib import messages
+from django.shortcuts import render, redirect, reverse
+from django.http import JsonResponse
+
+
 def get_index(request):
     # get the previously ordered items
     ordered_items_list = []
@@ -59,3 +70,39 @@ def about_us(request):
     
 def contact_us(request):
     return render(request, 'Home/contact-us.html')
+    
+# enquiry form route
+def enquiry(request):
+
+    email_subject = 'Your Enquiry Form Receipt'
+    sender_email = settings.DEFAULT_FROM_EMAIL
+    recipient_email = [sender_email, request.POST['email']]
+    
+    # create and send the email
+    enquiry_notification_message = render_to_string('Home/enquiry.template.html')
+    plain_message = strip_tags(enquiry_notification_message)
+    msg = EmailMultiAlternatives(email_subject, plain_message, sender_email, recipient_email)
+    msg.attach_alternative(enquiry_notification_message, "text/html")
+    msg.send()
+    
+    messages.success(request, "Enquiry form successfully submitted. Check your email for an email confirmation receipt.")
+    return redirect(reverse('get_index'))
+
+# newsletter subscription route
+def subscription(request):
+
+    email_subject = 'Your Subscription Form Receipt'
+    sender_email = settings.DEFAULT_FROM_EMAIL
+    recipient_email = [sender_email, request.GET.get('sub_email')]
+    
+    # create and send the email
+    enquiry_notification_message = render_to_string('Home/subscription.template.html')
+    plain_message = strip_tags(enquiry_notification_message)
+    msg = EmailMultiAlternatives(email_subject, plain_message, sender_email, recipient_email)
+    msg.attach_alternative(enquiry_notification_message, "text/html")
+    msg.send()
+    
+    data = {'subscribed': 'True'}
+    data_list = list(data.values())
+    
+    return JsonResponse(data_list, safe=False)
