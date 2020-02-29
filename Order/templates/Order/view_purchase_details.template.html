@@ -18,12 +18,12 @@
                 <p><strong>Order Date:</strong> {{ order.date }}</p>
                 <p><strong>Order Number:</strong> {{ order.order.id }}</p>
                 <p><strong>Delivery Method:</strong> SG Standard (2-4 working days)</p>
-                <p><strong>Delivery address:</strong>
+                <div><strong>Delivery address:</strong>
                     <!-- 240220 -->
                     <div>{{ order.order.street_address }}</div>
                     <div>{{ order.order.town_or_city }}, {{ order.order.postcode }}</div>
                     <div>{{ order.order.country }}</div>
-                </p>
+                </div>
             </div>
             
             <div>
