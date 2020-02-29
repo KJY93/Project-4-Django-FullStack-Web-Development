@@ -19,45 +19,45 @@ This project focuses on the development of a web application that allows user to
 ## Project Strategy and Scope
 ### User Stories
 1. User would like to browse through bestsellers, new & trending as well as books that are under $5.00
-Feature to implement: To include a carousel slider to display the bestsellers, new & trending as well as books that are under $5.00 to the user.
+- Feature to implement: To include a carousel slider to display the bestsellers, new & trending as well as books that are under $5.00 to the user.
 
 2. User would like to view through the details of a particular book
-Feature to implement: To include a book details page that display book information that includes the book's title, the book's author, the book's cover, the book's base price, the book's available quantity, the book's ratings, the book's edition overview as well as the book's description to the user.
+- Feature to implement: To include a book details page that display book information that includes the book's title, the book's author, the book's cover, the book's base price, the book's available quantity, the book's ratings, the book's edition overview as well as the book's description to the user.
 
 3. User would like to add a particular book to their shopping cart
-Feature to implement: To include an add to cart button that allows user to click on to add book of their choices to the cart once they have selected the quantity of that book they would like to purchase.
+- Feature to implement: To include an add to cart button that allows user to click on to add book of their choices to the cart once they have selected the quantity of that book they would like to purchase.
 
 4. User would like to view items in their shopping cart
-Feature to implement: To include a view shopping cart page that allows user to browse through the items that are currently in their shopping cart. 
+- Feature to implement: To include a view shopping cart page that allows user to browse through the items that are currently in their shopping cart. 
 
 5. User would like to update items in their shopping cart
-Feature to implement: To make use of jQuery to allow user to update the shopping cart items.
+- Feature to implement: To make use of jQuery to allow user to update the shopping cart items.
 
 1. User would like to delete a particular item in the shopping cart
-Feature to implement: To include a X button in the view shopping cart page that allows user to click on in order for them to delete the items of their choices.
+- Feature to implement: To include a X button in the view shopping cart page that allows user to click on in order for them to delete the items of their choices.
 
 7. User would like to have a summary shown to them before proceed to the actual payment page
-Feature to implement: To include a summary table in the confirm checkout page to show the items ordered by the user together with the subtotal that they would have to pay for.
+- Feature to implement: To include a summary table in the confirm checkout page to show the items ordered by the user together with the subtotal that they would have to pay for.
 
 8. User would like to make payment for their orders
-Feature to implement: To include a checkout page that prompt the user for their personal details as well as their credit card details before they could proceed to make any payment.
+- Feature to implement: To include a checkout page that prompt the user for their personal details as well as their credit card details before they could proceed to make any payment.
 
 9. User would like to view through their purchase history
-Feature to implement: To include a view purchase page to show the user the history and status of their order.
+- Feature to implement: To include a view purchase page to show the user the history and status of their order.
 
 10. User would like to update their user profile 
-Feature to implement: To include a user update profile page that allows user to update their name, email address, firstname as well as their lastname.
+- Feature to implement: To include a user update profile page that allows user to update their name, email address, firstname as well as their lastname.
 
 11.  Superuser would like to view through and update the orders status on purchases made by their customers
-Feature to implement: To include feature that allows only superuser to view customer's order and also to change a particular order status, i.e. from processing to either dispatched or delivered.
+- Feature to implement: To include feature that allows only superuser to view customer's order and also to change a particular order status, i.e. from processing to either dispatched or delivered.
 
 ## Project Structure    
 ### a. Overview
 This web application is structured into 8 main parts, i.e. user signing up for an account, logging in/out of an account, updating their user profile, browsing through the catalogues of books offered by the bookstore, add their favourite books to the shopping cart, update / delete their shopping cart items, checkout their shopping cart items as well as browse through their previous orders history.
 
 At the landing page, users will find a navbar at the uppermost part of the web application. This navbar will show links to different pages of the web application depending on whether a user is currently logged in or not. The 2 scenarios will be as follow:
-i. User not logged in: the navbar will display link to Explore More Books, Register and also Login. 
-ii. User logged in: the navbar will display link to Explore More Books, Profile, View Purchase, View Cart and also Logout.
+1. User not logged in: the navbar will display link to Explore More Books, Register and also Login. 
+2. User logged in: the navbar will display link to Explore More Books, Profile, View Purchase, View Cart and also Logout.
 
 At the main section of the landing page, users (both logged in as well as without logging in) will find a banner that display a short message informing the user that free shipping is applied for orders above $100 dollars and a Shop Now button below it. Further down, users will find three carousel sliders each displaying bestsellers book, new & trending book as well as books under $5.00. Clicking on the books displayed on the carousel sliders will redirect the user to a show books detail page whereby user will be able to check out all the relevant information related to the particular book and also to add the item to the cart if they are currently logged in. At the very bottom of the page, user will be able to find a footer section that contains information about the bookstore itself, the customer services it provides, the get in touch with us, the find us on links as well as a form that allows user to subscribe to the bookstore's newsletter. 
 
@@ -206,13 +206,24 @@ Note: For the variable name, you are free to choose a variable name of your choi
 ```
     An example of the environment variables key values pair would be as follow:
     a. DATABASE_URL(variable name) will be: postgres://xxxxxxxxxxxxxxxx (variable value)
-    b. DEFAULT_FROM_EMAIL (variable name) will be: <xyz>@<YOUR_DOMAIN_NAME> (variable value). Replace YOUR_DOMAIN_NAME to a domain name you are using, if you are using gmail, then replace it with gmail.com, if you are using yahoo, then replace it with yahoo.com, if you are using a domain bought from NameCheap, GoDaddy or any other domain, then replace it with the domain name that you have purchased. Also, replace xyz with the name of your mailbox.
+    
+    b. DEFAULT_FROM_EMAIL (variable name) will be: <xyz>@<YOUR_DOMAIN_NAME> (variable value). 
+    Replace YOUR_DOMAIN_NAME to a domain name you are using, if you are using gmail, then replace it with gmail.com, if you are using yahoo, 
+    then replace it with yahoo.com, if you are using a domain bought from NameCheap, GoDaddy or any other domain, 
+    then replace it with the domain name that you have purchased. Also, replace xyz with the name of your mailbox.
+    
     c. GOODREADS_API_KEY (variable name) will be: the key you obtained when you register for an account with GOODREADS (variable value)
+    
     d. MAILGUN_ACCESS_KEY (variable name) will be: the key you obtained when you register for an account with Mailgun (variable value)
+    
     e. MAILGUN_DOMAIN (variable name) will be: the domain name that you have signed up for and would like it to be associated to Mailgun (e.g. mailer.xxx.com)
+    
     f. STRIPE PUBLISHABLE KEY (variable name) will be: the publishable key you obtained when you register for an account with STRIPE (variable value)
+    
     g. STRIPE STRIPE_SECRET_KEY (variable name) will be: the secret key you obtained when you register for an account with STRIPE (variable value)
+    
     h. UPLOADCARE_PUBLIC_KEY (variable name) will be: the publishable key you obtained when you register for an account with UPLODADCARE (variable value)
+    
     i. UPLOADCARE_SECRET_KEY (variable name) will be: the secret key you obtained when you register for an account with UPLODADCARE (variable value)
 ```
 
@@ -241,8 +252,6 @@ The steps for the deployment are as follow:
         'whitenoise.middleware.WhiteNoiseMiddleware'
         ]
    ```
-
-
 
 5. Create a repository for the project. To initialize a new repository, run the following command in your terminal:
     a. git init
