@@ -60,7 +60,7 @@
                                         <img class="card-img-top" src="{{ book.image.cdn_url }}" alt="book image for {{ book.title }}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ book.title }}</h5>
-                                            <p class="card-text">
+                                            <div class="card-text">
                                                 <div class="author">
                                                     by {{ book.author.all |join:", " }}
                                                 </div>
@@ -68,7 +68,7 @@
                                                 <div class="price">
                                                     ${{ book.price }}
                                                 </div>                
-                                            </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
