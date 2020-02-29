@@ -11,6 +11,10 @@ class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True, help_text="Required. Enter a valid email address.", label="Email address")
     firstname = forms.CharField(required=True, max_length=150, help_text="Required. 150 characters or fewer.", label="First name")
     lastname = forms.CharField(required=True, max_length=150, help_text="Required. 150 characters or fewer.", label="Last name")
+    
+    # 290220
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput, required=True, help_text="Required. Your at least 8 characters long password cannot be entirely numeric, cannot be a too commonly used password and cannot be too similar to your personal information.")
+    password2 = forms.CharField(label="Password Confirmation", widget=forms.PasswordInput, required=True, help_text="Enter the same password as before, for verification.")
 
     class Meta:
         model = NewUser
