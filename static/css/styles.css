@@ -199,6 +199,12 @@ ul {
 }
 
 
+#registrationContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
 /* 230220 */
 #backToOrderSummary {
     padding-left: 5px;
