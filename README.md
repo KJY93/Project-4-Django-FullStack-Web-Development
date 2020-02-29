@@ -218,7 +218,8 @@ c. GOODREADS_API_KEY (variable name) will be: obtained during account registrati
 
 d. MAILGUN_ACCESS_KEY (variable name) will be: obtained during account registration with Mailgun (variable value)
 
-e. MAILGUN_DOMAIN (variable name) will be: the domain name that you have signed up for and would like it to be associated to Mailgun (e.g. mailer.xxx.com)
+e. MAILGUN_DOMAIN (variable name) will be: the domain name that you have signed up for and would like it to be 
+                                           associated to Mailgun (e.g. mailer.xxx.com)
 
 f. STRIPE PUBLISHABLE KEY (variable name) will be: obtained during account registration with STRIPE (variable value)
 
