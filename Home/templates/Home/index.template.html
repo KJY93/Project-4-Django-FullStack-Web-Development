@@ -45,7 +45,7 @@
                                         
                                         <h5 class="card-title">{{ product.title }}</h5>
                 
-                                        <p class="card-text">
+                                        <div class="card-text">
                                             
                                             <div class="title">
                                                 by {{ product.author.all |join:", " }}
@@ -55,7 +55,7 @@
                                                 ${{ product.price }}
                                             </div>
                                             
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -79,7 +79,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ new_product_item.title }}</h5>
                                         
-                                        <p class="card-text">
+                                        <div class="card-text">
                                             
                                             <div class="author">
                                                 by {{ new_product_item.author.all |join:", " }}
@@ -89,7 +89,7 @@
                                                 ${{ new_product_item.price }}
                                             </div>
                     
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -114,7 +114,7 @@
                                         
                                         <h5 class="card-title">{{ deal_item.title }}</h5>            
 
-                                        <p class="card-text">
+                                        <div class="card-text">
 
                                             <div class="author">
                                                 by {{ deal_item.author.all |join:", " }}
@@ -123,7 +123,7 @@
                                             <div class="price">
                                                 ${{ deal_item.price }}
                                             </div>
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
