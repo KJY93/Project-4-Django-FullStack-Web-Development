@@ -156,24 +156,19 @@ The web application was tested and is compatible on Chrome, Opera and Firefox.
 |16              | At the show book details page, user will be able to add the particular book item to their shopping cart. | Pass     |
 |17              | Clicking on the View Cart tab will redirect the user to the shopping cart page. At this page, user will be able to update the quantity of books they would like to order via AJAX. Also, user would be able to delete a particular shopping cart item by clicking on the X button. An update in the quantity of books ordered will update the number of items in the shopping cart in the navbar, the stock available under the books details column and also the total amount column. | Pass     |
 |18              | At the shopping cart page, user will be redirected to the home page of the website if they clicked on the continue shopping button. If they were to clicked on the proceed to checkout button, they will be redirected to the confirm checkout page. At the confirm checkout page, an order summary will be displayed showing users the details of their order and the amount that they would have to pay for. Clicking on the place order button will then redirect user to the checkout page whereby user will need to provide their personal and credit card details before being able to make a purchase. The credit card number and CVV that were used for this test was 4242424242424242 and 122 respectively. The expiry month and year of the credit provided in the form must be of at least the current month and the current year. | Pass     |
-|20              | User will only be able to submit payment on the checkout page if they provide their personal and credit card details. Once the user submitted their payment, they will be redirected back to the homepage and be prompted with a payment successful or failure message. | Pass     |
-|22              | Clicking on the view purchase tab will redirect the user to the page whereby they will be able to view the orders that they have made and also to check the status of their orders. | Pass     |
-|23             | Clicking on the view purchase tab will redirect the superuser to the page whereby they will be able to update the status of a particular order. | Pass     |
-|24              | Clicking on the profile tab will redirect the user to a page whereby they will be able to update their personal details. | Pass     |
+|19              | User will only be able to submit payment on the checkout page if they provide their personal and credit card details. Once the user submitted their payment, they will be redirected back to the homepage and be prompted with a payment successful or failure message. | Pass     |
+|20              | Clicking on the view purchase tab will redirect the user to the page whereby they will be able to view the orders that they have made and also to check the status of their orders. | Pass     |
+|21             | Clicking on the view purchase tab will redirect the superuser to the page whereby they will be able to update the status of a particular order. | Pass     |
+|22              | Clicking on the profile tab will redirect the user to a page whereby they will be able to update their personal details. | Pass     |
 
 ## Apps and Files Description
 The main apps and files used in this web application are briefly described as below:
 a. Apps
     i. BookProject - This is the main project folder. The important files in this folder is the settings.py file and the urls.py file. Settings.py files typically contains all the configured settings that is required to run the application. Urls.py file is the file that points to the different apps depending on the url that the user visited.
-    
     ii. Acounts - This is the app that handles the process of user registration, profile updating as well as user logging in and out of the web application. The important files in this folder are the models.py file, admin.py file, forms.py file, urls.py file, views.py file and also the html templates files. In the models.py file, a NewUser class was created by inheriting from the AbstractUser class. In forms.py file, three forms were created, namely the UserLoginForm, UserRegistrationForm and also the UserUpdateForm. The UserRegistrationForm and the UserUpdateForm both inherits from the NewUser class created in models.py file. The views.py file contains the route to handle user registration, user logging in/out and also the updating of user profile. Urls.py file contains the urls to link to the different route in views.py that is responsible to be executed depending on the url the user has visited. In admin.py file, newly created models that was created in models.py file were registered so that it can be viewed in the Django admin UI. The templates folder in this app contains the login, register and user profile update html template files.
-
     iii. Catalog - This is the app that shows books related information. The important files in this folder are models.py file, admin.py file, urls.py file, views.py file and also the html template files. In models.py file, three classes were created, namely the Book class, Genre class and the Author class. The views.py file contains the route to show books currently available in store, display books result returned via AJAX and also a route to show the relevant information of a particular selected book. Urls.py file contains the urls to link to the different route in the views.py file. Admin.py file, the Book class, Genre class and Author class that was creted in the models.py file was registered so that it can be viewed in the Django admin UI. The templates folder in this app contains 4 files, books_list.template.html file is the file that shows all the books that is currently in store, show_book_details.template.html file will display the relevant information of a particular book, entry_list.html file is the main template file to render when the request to retrieve the book is not done through AJAX request while entry_list_page.html file contains the part to be updated if the request to obtain the filtered book result is done through AJAX request.
-
     iv. Carts - This is the app that shows the shopping cart items to the user. The important files in this folder are the urls.py file, views.py file, contexts.py file and also the html template files. The views.py file contains the route to handle the add to cart, update cart, remove from cart and view cart request. The urls.py file contain the urls to link to the different route in the views.py file. The contexts.py file, which is the context processor, was created so that the total cart price could be available on each page of the web application. The templates folder contains the view cart html file that will displayed a summary of the cart items when rendered.
-
     v. Home -  This is the app that shows information on the landing page. The important files in this folder are the urls.py file, views.py file and also the html template files. The views.py file contains route to show bestsellers, new & trending as well as books that are under $5.00. The urls.py file contain the urls to link to the different route in the views.py file. The templates folder contains 4 files, the index.template.html file will display the landing page of the website when rendered. The about us, contact us and also the our services html files will each display about us, contact us and our services information when rendered.
-
     vi. Order - This is the app that is in charge of handling the checking out process of an order. The important files in this folder are admin.py, forms.py, models.py, urls.py and also views.py file. Models.py files contains the Charge class, Order class and also the OrderItem class. In the forms.py file, two forms were created, namely the OrderForm and also the PaymentForm. The views.py file contains the route to handle checkout,  confirm checkout, view purchase list, view puchase orders and also update order. The urls.py file contain the urls to link to the different route in the views.py file. The classes created in the models.py file were registered in the admin.py file so that it could be viewed in the Django admin UI. The templates folder contains the html files for checkout, confirm checkout, view puchase list and also view purchase details.
 
 b. Folders
@@ -208,6 +203,7 @@ Note: This web application was run on a Windows PC. The following command might 
 
 Note: For the variable name, you are free to choose a variable name of your choice:
 
+```
     An example of the environment variables key values pair would be as follow:
     a. DATABASE_URL(variable name) will be: postgres://xxxxxxxxxxxxxxxx (variable value)
     b. DEFAULT_FROM_EMAIL (variable name) will be: <xyz>@<YOUR_DOMAIN_NAME> (variable value). Replace YOUR_DOMAIN_NAME to a domain name you are using, if you are using gmail, then replace it with gmail.com, if you are using yahoo, then replace it with yahoo.com, if you are using a domain bought from NameCheap, GoDaddy or any other domain, then replace it with the domain name that you have purchased. Also, replace xyz with the name of your mailbox.
@@ -218,6 +214,7 @@ Note: For the variable name, you are free to choose a variable name of your choi
     g. STRIPE STRIPE_SECRET_KEY (variable name) will be: the secret key you obtained when you register for an account with STRIPE (variable value)
     h. UPLOADCARE_PUBLIC_KEY (variable name) will be: the publishable key you obtained when you register for an account with UPLODADCARE (variable value)
     i. UPLOADCARE_SECRET_KEY (variable name) will be: the secret key you obtained when you register for an account with UPLODADCARE (variable value)
+```
 
 5. To run the web application, run the following command in your terminal:
 ```python3 manage.py runserver 8080```
@@ -229,17 +226,24 @@ The steps for the deployment are as follow:
 1. Sign up for an account at [Heroku](https://www.heroku.com/)
 2. Install Heroku on your terminal by running this command: ```sudo snap install heroku --classic```
 3. Install the following dependencies that is needed to make the project to work on Heroku
-   ```sudo apt install libpq-dev python3-dev```
-   ```sudo pip3 install gunicorn```
-   ```sudo pip3 install psycopg2```
-   ```sudo pip3 install Pillow```
-   ```sudo pip3 install whitenoise``` 
-   ```sudo pip3 install dj_database_url```
+   ```
+       sudo apt install libpq-dev python3-dev
+       sudo pip3 install gunicorn
+       sudo pip3 install psycopg2
+       sudo pip3 install Pillow
+       sudo pip3 install whitenoise 
+       sudo pip3 install dj_database_url
+   ```
 4. In the settings.py file, add WhiteNoise to the middleware:
-   ```MIDDLEWARE = [```
-   ```.....```
-   ```'whitenoise.middleware.WhiteNoiseMiddleware'```
-   ```]```
+    ```
+        MIDDLEWARE = [
+        .....
+        'whitenoise.middleware.WhiteNoiseMiddleware'
+        ]
+   ```
+
+
+
 5. Create a repository for the project. To initialize a new repository, run the following command in your terminal:
     a. git init
     b. git add .
@@ -272,9 +276,11 @@ PostgreSQL will be used as the database to store all the datatables and datasets
 5. In the settings.py file, go to the DATABASES section. Comment out the lines of code that uses sqlite3 as the database and add in this line of code ```DATABASES = {'default': dj_database_url.parse(os.environ["DATABASE_URL"])}```
 6. Save the settings.py file and restart the terminal. After that, do a migration by running this command: ```python3 manage.py migrate```
 7. Commit all files and do a git push to Heroku by running this few lines of code:
-   a. ```git add . ```
-   b. ```git commit -m "Updated settings.py" ```
-   c. ```git push heroku master```
+    ```
+        git add .
+        git commit -m "Updated settings.py"
+        git push heroku master
+    ```
 8. Create a superuser with this command ```python3 manage.py createsuperuser```. Once the superuser account is created, the superuser will be able to access Django admin and add in models.
 
 ### Credits and Acknowledgements:
