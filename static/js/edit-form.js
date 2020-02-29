@@ -23,9 +23,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     $("#total_payable_amount").text(response[row_of_record+1]['new_total_amount']);
                 }
             });
-            
-            
         });
-
     }
-})
+});
