@@ -23,7 +23,7 @@
                         
                         <div class="mt-4">
                             <!-- enquiry form -->
-                            <form method="POST" action="{% url 'enquiry' %}">
+                            <form method="POST" action="{% url 'enquiry' %}" id="enquiryForm">
                                 <!-- 290220 csrf token -->
                                 {% csrf_token %}
                                 <div class="form-group row">
@@ -57,7 +57,7 @@
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-warning"><strong>SUBMIT</strong></button>
                                     
-                                    <button type="button" class="btn btn-warning"><strong>RESET</strong></button>
+                                    <button type="button" class="btn btn-warning" id="EnquiryResetButton"><strong>RESET</strong></button>
                                 </div>
                                 
                             </form>                                
@@ -67,4 +67,8 @@
             </div>        
             
     </div>
+{% endblock %}
+
+{% block scripts %}
+     <script src="{% static 'js/enquiry-form-reset.js' %}"></script>
 {% endblock %}
