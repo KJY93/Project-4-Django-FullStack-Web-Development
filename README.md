@@ -85,7 +85,7 @@ Clicking on the Register button will redirect user to the user registration page
 Clicking on the Login button will redirect user to the login page whereby they will need to sign in to their account using the username and email address that they have  registered for during the account registration process.
 
 ### a. Wireframes
-https://drive.google.com/file/d/1r3PcmpphwMDEQxn6VMfh8b1Sz8pESkH6/view?usp=sharing
+https://drive.google.com/file/d/1-3lhdxo0nN7u5gydT60EYCz0HIwfzbZE/view?usp=sharing
 
 ## Project Skeleton
 ### a. Existing Features
