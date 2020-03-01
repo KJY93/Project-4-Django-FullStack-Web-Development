@@ -17,7 +17,6 @@ body {
 
 #contentContainer {
     overflow: auto;
-    /* 010320 chg 120 to 130 */
     padding-bottom: 130px;
 }
 
@@ -26,11 +25,9 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     position: relative;
-    /* 010320 120 to 130 */
     height: 130px;
     margin-top: -130px;
     clear: both;
-    /* 010320 */
     color: #ffffff;
 }
 
@@ -124,7 +121,6 @@ ul {
 }
 
 
-/* 010320 need to commit 80 to 70*/
 #searchButton, #resetButton {
     width: 70px;
 }
@@ -208,7 +204,7 @@ ul {
     justify-content: center;
 }
 
-/* 010320 */
+
 #ratingsCount {
     margin-left: 3px;
 }
@@ -217,7 +213,6 @@ ul {
     margin-right: 3px;
 }
 
-/* 010320 */
 .navbar-nav a {
     color: #ffffff !important;
 }
@@ -236,14 +231,10 @@ ul {
 }
 
 
-
-
 /* 010320 */
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
     width: 160px;
 }
-
-
 
 @media (max-width: 575.98px) { 
     .title, .author, .price {
@@ -252,17 +243,12 @@ ul {
     
     /* 010320 */
     .itemImg img, .itemImgDisplay img {
-        /*max-height: 240px;*/
-        /*height: 270px;*/
-        /* 010320 */
         height: 370px;
     }
     
     
     /* 010320 */
     .card, #cardDisplay {
-        /*height: 400px;*/
-        /* 010320 */
         height: 490px;
     }
     
@@ -298,29 +284,19 @@ ul {
     
     
     .itemImg img {
-        /*max-height: 240px;*/
-        /*height: 270px;*/
-        /* 010320 */
         height: 290px;
     }
 
     .card {
-        /*height: 400px;*/
-        /* 010320 */
         height: 440px;
     }
     
     
     .itemImgDisplay img {
-        /*max-height: 240px;*/
-        /*height: 270px;*/
-        /* 010320 */
         height: 220px;
     }
 
     #cardDisplay {
-        /*height: 400px;*/
-        /* 010320 */
         height: 380px;        
     }
 }
