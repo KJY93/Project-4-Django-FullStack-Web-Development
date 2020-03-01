@@ -6,7 +6,7 @@ This project focuses on the development of a web application that allows user to
 
 ## Demo
 * Heroku Link: [Click Here](https://kjy-pick-a-book.herokuapp.com/)
-* Screencast Link: [Click Here]()
+* Screencast Link: [Click Here](http://youtu.be/pE4MKBMUJVY?hd=1)
 
 ## Personal Touch
 - Added password reset function to the web application
