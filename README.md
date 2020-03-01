@@ -281,7 +281,7 @@ The steps for the deployment are as follow:
 10. Create a new app in Heroku by running this command: ```heroku create <APP NAME> ```. Replace the <APP NAME> with a name of your choice and note that the Heroku app name chosen needs to be unique 
 11. Double check the Heroku app was successfully created by running this command: ```git remote -v```
 12. In Heroku, go to the settings tab and click on the 'Reveal Config Vars' button. Copy the environment variables from the .bashrc file in AWS Cloud 9 over
-    ![Environment variables settings](https://i.imgur.com/SC4ckZb.png)
+    ![Environment variables settings](https://i.imgur.com/jlkidiR.png)
 13. At the root folder, create a filename called Procfile. Add this line ```web: gunicorn <PROJECT_FOLDER>.wsgi:application``` inside the Procfile and replace the <PROJECT_FOLDER> with your project's name
 14. Inside the settings.py file, add the domain name of the heroku app under the ALLOWED_HOST section
 15. Generate a requirements.txt file with ```pip3 freeze --local > requirements.txt```
