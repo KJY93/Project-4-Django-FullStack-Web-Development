@@ -206,9 +206,14 @@ Laptop / Desktop                                        |  Mobile Device
 :------------------------------------------------------:|:-----------------------------------------------------:
 ![display on laptop](https://i.imgur.com/2DOQyyc.png)   | ![display on mobile](https://i.imgur.com/L9Eexck.png)
 
-## Site
+## Site Framework setup
 Django contrib sites were used to setup the domain in Django admin to send out the password reset link to the user.
 ![display on laptop](https://i.imgur.com/4yAPccN.png)
+
+## Admin Feature Account
+To test out the admin rights of this web application, i.e. to change the status of a particular order, do login with the following credentials:
+Username: JY
+Password: @Test12345
 
 ## Deployment
 ### a. To run this web application on your local PC
