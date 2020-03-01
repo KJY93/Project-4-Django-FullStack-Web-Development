@@ -4,46 +4,46 @@
     <div class="container-fluid mt-3">
         
         <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-3 mt-3">
+            <div class="col-sm-12 col-md-3 col-lg-3 mt-3">
                 <div>
                     <div>
                         <h6><strong>FILTER BY</strong></h6>
                     </div>
                 
                 </div>    
+                <div>
                     <div>
-                        <div>
-                            <select id="genreFilter" multiple="multiple" title="Genre" data-style="btn-warning">
-                                {% for genre in genres %}
-                                    {% if genre.category_description == category %}
-                                        <option value="{{ genre.category_description }}" selected>{{ genre.category_description }}</option>
-                                    {% else %}
-                                        <option value="{{ genre.category_description }}">{{ genre.category_description }}</option>
-                                    {% endif %}
-                                {% endfor %} 
-                            </select>
-    
-                            <select class="mt-2" id="authorFilter" multiple="multiple" title="Author" data-style="btn-warning">
-                                {% for author in authors %}
-                                    <option value="{{ author.name }}">{{ author.name }}</option>
-                                {% endfor %}  
-                            </select>
-                        </div>
-                        
-                        <!-- 0902 price range slider -->
-                        <label class="mt-3">Price Range</label>
-                        <input type="text" id="price_range" name="price_range" value="" />
+                        <select id="genreFilter" multiple="multiple" title="Genre" data-style="btn-warning">
+                            {% for genre in genres %}
+                                {% if genre.category_description == category %}
+                                    <option value="{{ genre.category_description }}" selected>{{ genre.category_description }}</option>
+                                {% else %}
+                                    <option value="{{ genre.category_description }}">{{ genre.category_description }}</option>
+                                {% endif %}
+                            {% endfor %} 
+                        </select>
 
-                        <div class="mt-2">
-                            <!-- change button color 010320 -->
-                            <button id="searchButton" type="button" class="btn btn-info">Search</button>
-                            <button id="resetButton" type="button" class="btn btn-info">Reset</button>
-                        </div>
+                        <select class="mt-2" id="authorFilter" multiple="multiple" title="Author" data-style="btn-warning">
+                            {% for author in authors %}
+                                <option value="{{ author.name }}">{{ author.name }}</option>
+                            {% endfor %}  
+                        </select>
                     </div>
+                    
+                    <!-- 0902 price range slider -->
+                    <label class="mt-3">Price Range</label>
+                    <input type="text" id="price_range" name="price_range" value="" />
+
+                    <div class="mt-2">
+                        <!-- change button color 010320 -->
+                        <button id="searchButton" type="button" class="btn btn-info">Search</button>
+                        <button id="resetButton" type="button" class="btn btn-info">Reset</button>
+                    </div>
+                </div>
  
             </div>
             
-            <div class="col-sm-12 col-md-8 col-lg-9">
+            <div class="col-sm-12 col-md-9 col-lg-9">
                 <!-- by default if nothing is selected all the books result will be displayed -->
                 <!-- if filter is on, this corresponding div section will be updated with the filtered results -->
                 <div class="row" id="bookFilteredResult">
@@ -55,7 +55,7 @@
                         <div class="col-sm-12 col-md-4 col-lg-3 mt-3">
                             <a href='{% url "book_details" book_id=book.id %}'>
                                 <div class="card-deck">
-                                    <div class="card itemImg">
+                                    <div class="card itemImgDisplay" id="cardDisplay">
                                         <img class="card-img-top" src="{{ book.image.cdn_url }}" alt="book image for {{ book.title }}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ book.title }}</h5>
