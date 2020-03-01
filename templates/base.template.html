@@ -43,7 +43,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         
         <a class="navbar-brand" href="/"><img class="homeLogo" src="{% static 'images/book_shelf.png' %}" alt="home logo"></a>
 
@@ -75,55 +75,57 @@
 
     </div>
     
-    <footer class="bg-light" id="footerContainer">
-    	<div>        		
-    	    <div class="row">
-    			<div class="col-sm-12 col-md-3">
-    				<div class="mt-3"><strong>GET TO KNOW US</strong></div>
-    				<div class="separator"></div>
-    				<div><a href="{% url 'about_us' %}">About Us</a></div>
-    				<div><a href="{% url 'our_service' %}">Customer Services</a></div>
-    			</div>
+    <div class="bg-dark">
+        <footer id="footerContainer">
+        	<div>        		
+        	    <div class="row">
+        			<div class="col-sm-12 col-md-3">
+        				<div class="mt-3"><strong>GET TO KNOW US</strong></div>
+        				<div class="separator"></div>
+        				<div><a href="{% url 'about_us' %}">About Us</a></div>
+        				<div><a href="{% url 'our_service' %}">Customer Services</a></div>
+        			</div>
+        
+        			<div class="col-sm-12 col-md-3">
+        				<div class="mt-3"><strong>GET IN TOUCH</strong></div>
+        				<div class="separator"></div>
+        				<div><a href="{% url 'contact_us' %}">Contact Us</a></div>
+        			</div>
+        
+        			<div class="col-sm-12 col-md-3">
+        				<div class="mt-3"><strong>FIND US ON</strong></div>
+        				<div class="separator"></div>
+        				<div>
+        					<a href="https://www.facebook.com/"><i class="fab fa-facebook social-media-logo"></i></a>
+        					<a href="https://www.instagram.com/"><i class="fab fa-instagram social-media-logo"></i></a>
+        					<a href="https://twitter.com/login"><i class="fab fa-twitter social-media-logo"></i></a>
+        				</div>
+        			</div>
+        
+        			<div class="col-sm-12 col-md-3">
+        				<div class="mt-3"><strong>SUBSCRIBE TO OUR NEWSLETTER</strong></div>
+        
+        				<div class="separator"></div>
+        				
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Your Email" name="sub_email" id="sub_email" required>
+                            <button type="button" class="btn btn-primary  input-group-append" value="submit" id="subscription">SUBMIT</button>
+                           
+                        </div>
+        			</div>	
+        		</div>
+        		
+        		<div class="row">
+        		    <!-- 010320 -->
+        		    <div class="col-sm-12">
+        		        <div class="text-center">
+        		            <small>Copyright <i class="far fa-copyright"></i> {% now "Y" %} Pick-A-Book Pte. Ltd.</small>
+        		        </div>
+        		    </div>
+        		</div>
+        	</div>
     
-    			<div class="col-sm-12 col-md-3">
-    				<div class="mt-3"><strong>GET IN TOUCH</strong></div>
-    				<div class="separator"></div>
-    				<div><a href="{% url 'contact_us' %}">Contact Us</a></div>
-    			</div>
-    
-    			<div class="col-sm-12 col-md-3">
-    				<div class="mt-3"><strong>FIND US ON</strong></div>
-    				<div class="separator"></div>
-    				<div>
-    					<a href="https://www.facebook.com/"><i class="fab fa-facebook social-media-logo"></i></a>
-    					<a href="https://www.instagram.com/"><i class="fab fa-instagram social-media-logo"></i></a>
-    					<a href="https://twitter.com/login"><i class="fab fa-twitter social-media-logo"></i></a>
-    				</div>
-    			</div>
-    
-    			<div class="col-sm-12 col-md-3">
-    				<div class="mt-3"><strong>SUBSCRIBE TO OUR NEWSLETTER</strong></div>
-    
-    				<div class="separator"></div>
-    				
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Your Email" name="sub_email" id="sub_email" required>
-                        <button type="button" class="btn btn-primary  input-group-append" value="submit" id="subscription">SUBMIT</button>
-                       
-                    </div>
-    			</div>	
-    		</div>
-    		
-    		<div class="row">
-    		    <div class="col-sm-12">
-    		        <div class="text-center">
-    		            <small>Copyright <i class="far fa-copyright"></i> {% now "Y" %} Pick-A-Book Pte. Ltd.</small>
-    		        </div>
-    		    </div>
-    		</div>
-    	</div>
-
-    </footer>
+        </footer>
 
     
     <!-- Bootstrap JS -->
