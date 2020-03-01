@@ -56,8 +56,12 @@ def book_details(request, book_id):
     # get book ratings from GoodReads using GoodReads API
     res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key":settings.GOODREADS_API_KEY, "isbns": book_ISBN})
     average_ratings = res.json()["books"][0]["average_rating"]
+    ratings_count = res.json()["books"][0]["ratings_count"]
+    ratings_count_formatted = f"{ratings_count:,}"
+    
 
     return render(request, 'Catalog/show_book_details.template.html', {
+        'ratings_count_formatted':ratings_count_formatted,
         'book_detail':book_detail,
         'average_ratings':average_ratings,
         'book_genre': book_genre
