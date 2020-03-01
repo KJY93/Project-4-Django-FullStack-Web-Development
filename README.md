@@ -206,6 +206,10 @@ Laptop / Desktop                                        |  Mobile Device
 :------------------------------------------------------:|:-----------------------------------------------------:
 ![display on laptop](https://i.imgur.com/2DOQyyc.png)   | ![display on mobile](https://i.imgur.com/L9Eexck.png)
 
+## Site
+Django contrib sites were used to setup the domain in Django admin to send out the password reset link to the user.
+![display on laptop](https://i.imgur.com/4yAPccN.png)
+
 ## Deployment
 ### a. To run this web application on your local PC
 Instructions
