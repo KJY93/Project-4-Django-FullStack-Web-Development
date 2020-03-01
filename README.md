@@ -14,7 +14,7 @@ This project focuses on the development of a web application that allows user to
 - Incorporate Goodreads API to the web application to retrieve and display ratings for all the books available in the web application
 - Used AJAX JQuery and Django Digg-style endless pagination to display the filtered books result
 - Added in Stripe to handle payment made by users
-- Mailgun was configured with a domain name from NameCheap to send out order confirmation email to users to notify them that their payment was successful.
+- Mailgun was configured with a domain name from NameCheap to send out order confirmation email to users to notify them that their payment was successful, to notify that they have successfully subscribed to the bookstore newsletter and also to notify that their enquiry form has been received.
 
 ## Project Strategy and Scope
 ### User Stories
@@ -50,6 +50,15 @@ This project focuses on the development of a web application that allows user to
 
 11. Superuser would like to view through and update the orders status on purchases made by their customers
     - Feature to implement: To include feature that allows only superuser to view customer's order and also to change a particular order status, i.e. from processing to either dispatched or delivered.
+
+12. User would like to receive order confirmation email upon successful payment
+    - Feature to implement: To use mailgun to send order confirmation email to users to notify them that their payment is successful.
+
+13. User would like to receive newsletter subscription confirmation email
+    - Feature to implement: To use mailgun to send subscription confirmation email to users to notify them they have sucessfully subscribed to the bookstore's newsletter.
+
+14. User would like to receive enquiry form confirmation email
+    - Feature to implement: To use mailgun to send enquiry confirmation email to users to notify them that their enquiry have been received.
 
 ## Project Structure    
 ### a. Overview
@@ -94,6 +103,10 @@ https://drive.google.com/file/d/1r3PcmpphwMDEQxn6VMfh8b1Sz8pESkH6/view?usp=shari
 12. Users are able to browse through their order history and also to check the status of each orders that has been made.
 13. Superuser are able to view orders made by customer and also to change the order status of a particular order, i.e. from processing to either dispatched or delivered.
 14. User will receive an order confirmation email if their payment is sucessful. **Do take note that you will only receive the order notification email if you have signed up with a valid email address during the account registration process.**
+15. User will receive newsletter subscription confirmation email if they have choose to subscribe to the bookstore's newsletter **Do take note that you will only receive the order notification email if you have signed up with a valid email address during the account registration process.**
+16. User will receive enquiry confirmation email if they have successfully submitted an enquiry form **Do take note that you will only receive the order notification email if you have signed up with a valid email address during the account registration process.**
+**Note**: For item no.14 to no.16, email might take a few minutes to reach the recipient's inbox.
+
 
 ### b. Features to be implemented in the future
 For the future development of this bookstore web application, I would like to include the following features:
@@ -168,7 +181,7 @@ The main apps and files used in this web application are briefly described as be
 2. Acounts - This is the app that handles the process of user registration, profile updating as well as user logging in and out of the web application. The important files in this folder are the models.py file, admin.py file, forms.py file, urls.py file, views.py file and also the html templates files. In the models.py file, a NewUser class was created by inheriting from the AbstractUser class. In forms.py file, three forms were created, namely the UserLoginForm, UserRegistrationForm and also the UserUpdateForm. The UserRegistrationForm and the UserUpdateForm both inherits from the NewUser class created in models.py file. The views.py file contains the route to handle user registration, user logging in/out and also the updating of user profile. Urls.py file contains the urls to link to the different route in views.py that is responsible to be executed depending on the url the user has visited. In admin.py file, newly created models that was created in models.py file were registered so that it can be viewed in the Django admin UI. The templates folder in this app contains the login, register and user profile update html template files.
 3. Catalog - This is the app that shows books related information. The important files in this folder are models.py file, admin.py file, urls.py file, views.py file and also the html template files. In models.py file, three classes were created, namely the Book class, Genre class and the Author class. The views.py file contains the route to show books currently available in store, display books result returned via AJAX and also a route to show the relevant information of a particular selected book. Urls.py file contains the urls to link to the different route in the views.py file. Admin.py file, the Book class, Genre class and Author class that was creted in the models.py file was registered so that it can be viewed in the Django admin UI. The templates folder in this app contains 4 files, books_list.template.html file is the file that shows all the books that is currently in store, show_book_details.template.html file will display the relevant information of a particular book, entry_list.html file is the main template file to render when the request to retrieve the book is not done through AJAX request while entry_list_page.html file contains the part to be updated if the request to obtain the filtered book result is done through AJAX request.
 4. Carts - This is the app that shows the shopping cart items to the user. The important files in this folder are the urls.py file, views.py file, contexts.py file and also the html template files. The views.py file contains the route to handle the add to cart, update cart, remove from cart and view cart request. The urls.py file contain the urls to link to the different route in the views.py file. The contexts.py file, which is the context processor, was created so that the total cart price could be available on each page of the web application. The templates folder contains the view cart html file that will displayed a summary of the cart items when rendered.
-5. Home -  This is the app that shows information on the landing page. The important files in this folder are the urls.py file, views.py file and also the html template files. The views.py file contains route to show bestsellers, new & trending as well as books that are under $5.00. The urls.py file contain the urls to link to the different route in the views.py file. The templates folder contains 4 files, the index.template.html file will display the landing page of the website when rendered. The about us, contact us and also the our services html files will each display about us, contact us and our services information when rendered.
+5. Home -  This is the app that shows information on the landing page. The important files in this folder are the urls.py file, views.py file and also the html template files. The views.py file contains route to show bestsellers, new & trending as well as books that are under $5.00. The urls.py file contain the urls to link to the different route in the views.py file. The templates folder contains 6 files, the index.template.html file will display the landing page of the website when rendered. The about us, contact us and also the our services html files will each display about us, contact us and our services information when rendered. The enquiry and subscription template file on the other hand, serves as the confirmation email template to be sent to the user if they have subscribed to the bookstore's newsletter or have submitetd an enquiry form.
 6. Order - This is the app that is in charge of handling the checking out process of an order. The important files in this folder are admin.py, forms.py, models.py, urls.py and also views.py file. Models.py files contains the Charge class, Order class and also the OrderItem class. In the forms.py file, two forms were created, namely the OrderForm and also the PaymentForm. The views.py file contains the route to handle checkout,  confirm checkout, view purchase list, view puchase orders and also update order. The urls.py file contain the urls to link to the different route in the views.py file. The classes created in the models.py file were registered in the admin.py file so that it could be viewed in the Django admin UI. The templates folder contains the html files for checkout, confirm checkout, view puchase list and also view purchase details.
 
 ### b. Folders
@@ -188,7 +201,7 @@ Snapshot of limitations discovered:
 
 Laptop / Desktop                                        |  Mobile Device
 :------------------------------------------------------:|:-----------------------------------------------------:
-![display on laptop](https://i.imgur.com/e0wdE5S.png)   | ![display on mobile](https://i.imgur.com/Ef0lf1W.png)
+![display on laptop](https://i.imgur.com/2DOQyyc.png)   | ![display on mobile](https://i.imgur.com/L9Eexck.png)
 
 ## Deployment
 ### a. To run this web application on your local PC
@@ -324,7 +337,7 @@ PostgreSQL will be used as the database to store all the datatables and datasets
    The password reset for this web application is accomplished by following [Vitor Freitas](https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html) create a password reset view tutorial.
 
 11. Litmus:
-    The order confirmation email template were adapted from https://litmus.com/
+    The order confirmation, newsletter subscription and enquiry confirmation email template were adapted from https://litmus.com/
 
 ## Special Thanks
 A huge thank you to our instructor, Mr Paul Chor Kun Xin for providing his guidance and invaluable feedbacks that has helped me to accomplish this final project.
