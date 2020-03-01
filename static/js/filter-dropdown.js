@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         type: "double",
         grid: true,
         min: 0,
-        max: 1000,
+        max: 200,
         from: 0,
         to: 0,
         prefix: "$"
