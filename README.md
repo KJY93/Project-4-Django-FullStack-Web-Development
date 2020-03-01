@@ -173,6 +173,9 @@ The web application was tested and is compatible on Chrome, Opera and Firefox.
 |20              | Clicking on the view purchase tab will redirect the user to the page whereby they will be able to view the orders that they have made and also to check the status of their orders. | Pass     |
 |21             | Clicking on the view purchase tab will redirect the superuser to the page whereby they will be able to update the status of a particular order. | Pass     |
 |22              | Clicking on the profile tab will redirect the user to a page whereby they will be able to update their personal details. | Pass     |
+|23              | User registered with a valid email address will receive order confirmation email once they have made payment. Email received might take to a couple of minutes.  | Pass     |
+|24              | User registered with a valid email address will newsletter subscription confirmation email if they choose to choose to subscribe to the bookstore newsletter. Email received might take to a couple of minutes.  | Pass     |
+|25              | User registered with a valid email address will receive enquiry confirmation email if they have submitted an enquiry form successfully.  | Pass     |
 
 ## Apps and Files Description
 The main apps and files used in this web application are briefly described as below:
