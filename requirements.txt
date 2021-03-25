@@ -55,7 +55,7 @@ pyrsistent==0.15.6
 python-dateutil==2.8.1
 pytz==2019.3
 pyuploadcare==2.6.0
-PyYAML==5.2
+PyYAML==5.4
 regex==2019.12.19
 requests==2.22.0
 rsa==3.4.2
