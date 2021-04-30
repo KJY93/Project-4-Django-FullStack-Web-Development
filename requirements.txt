@@ -58,7 +58,7 @@ pyuploadcare==2.6.0
 PyYAML==5.2
 regex==2019.12.19
 requests==2.22.0
-rsa==3.4.2
+rsa==4.7
 s3transfer==0.2.1
 serverlessrepo==0.1.9
 six==1.14.0
